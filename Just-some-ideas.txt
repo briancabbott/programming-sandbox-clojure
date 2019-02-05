@@ -1,0 +1,13 @@
+Just some ideas
+
+Build something with Luminus or Reagent and get it up running
+
+REST API
+MOBILE APP - Takes two numbers, returns the sum
+
+
+Use some re-natal
+
+-------------- () 
+
+Phone Book App
