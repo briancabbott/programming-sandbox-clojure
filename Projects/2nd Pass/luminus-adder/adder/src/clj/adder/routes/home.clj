@@ -24,7 +24,7 @@
   (+ number-one number-two))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
-  (POST "/" [] (page-hdlr-calculate-addition))
+  (GET "/" request (home-page request))
+  (POST "/" request (page-hdlr-calculate-addition))
   (GET "/about" [] (about-page)))
 
