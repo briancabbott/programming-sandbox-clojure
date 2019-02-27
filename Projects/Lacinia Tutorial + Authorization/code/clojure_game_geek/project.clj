@@ -5,4 +5,6 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [com.walmartlabs/lacinia "0.21.0"]
+                 [com.walmartlabs/lacinia-pedestal "0.5.0"]
+                 [io.aviso/logging "0.2.0"]
                  [org.flatland/ordered "1.5.7"]])
