@@ -1,0 +1,13 @@
+{:objects 
+  {:Game {:description "A game owned by a developer for which scores can be recorded"
+          :fields {:key {:type (non-null String)
+                         :description "Unique identifier for this game"}
+                   :name {:type (non-null String)}
+                   :created {:type Int
+                             :description "Unix epoch seconds when game was added to database"}}}}
+ :queries
+  {:game {:type :Game
+          :description "Retrieve a single Game by its name"
+          :args {:name {:type (non-null String)
+                        :description "Unique name for game."}}
+          :resolve :resolve-game}}}
