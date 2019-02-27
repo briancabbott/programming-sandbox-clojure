@@ -8,3 +8,7 @@
 (defn q 
   [query-string]
   (lacinia/execute schema query-string nil nil))
+
+
+(defn hi []
+  (s/sayhi))
