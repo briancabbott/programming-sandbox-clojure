@@ -1,0 +1,1 @@
+web: java $JVM_OPTS -cp target/pure_funcs.jar clojure.main -m pure-funcs.server

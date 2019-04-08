@@ -1,0 +1,3 @@
+# (pure-funcs )...
+
+A Small boostrapper for going through the blog article posted here: https://purelyfunctional.tv/guide/reagent/
