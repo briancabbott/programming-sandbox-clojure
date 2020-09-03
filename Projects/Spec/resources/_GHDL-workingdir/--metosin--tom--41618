@@ -1,0 +1,6 @@
+child_process(41618)::clone(https://github.com/metosin/tom):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tom'...
+child_process(41618)::clone(https://github.com/metosin/tom):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41618)::clone(https://github.com/metosin/tom):stderr:data: remote: Enumerating objects: 6, done.        
+remote: Counting objects:  16% (1/6)        remote: Counting objects:  33% (2/6)        remote: Counting objects:  50% (3/6)        remote: Counting objects:  66% (4/6)        remote: Counting objects:  83% (5/6)        remote: Counting objects: 100% (6/6)        remote: Counting objects: 100% (6/6), done.        
+remote: Compressing objects:  33% (1/3)        child_process(41618)::clone(https://github.com/metosin/tom):stderr:data: remote: Total 27 (delta 4), reused 3 (delta 3), pack-reused 21        
+child_process(41618)::clone(https://github.com/metosin/tom):close()

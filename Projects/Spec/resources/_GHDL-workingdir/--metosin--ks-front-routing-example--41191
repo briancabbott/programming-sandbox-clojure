@@ -1,0 +1,5 @@
+child_process(41191)::clone(https://github.com/metosin/ks-front-routing-example):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/ks-front-routing-example'...
+child_process(41191)::clone(https://github.com/metosin/ks-front-routing-example):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41191)::clone(https://github.com/metosin/ks-front-routing-example):stderr:data: remote: Enumerating objects: 54, done.        
+child_process(41191)::clone(https://github.com/metosin/ks-front-routing-example):stderr:data: remote: Total 54 (delta 0), reused 0 (delta 0), pack-reused 54        
+child_process(41191)::clone(https://github.com/metosin/ks-front-routing-example):close()

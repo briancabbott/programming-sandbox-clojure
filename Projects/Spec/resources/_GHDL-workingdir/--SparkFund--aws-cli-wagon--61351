@@ -1,0 +1,5 @@
+child_process(61351)::clone(https://github.com/SparkFund/aws-cli-wagon):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/aws-cli-wagon'...
+child_process(61351)::clone(https://github.com/SparkFund/aws-cli-wagon):stderr:data: POST git-upload-pack (415 bytes)
+child_process(61351)::clone(https://github.com/SparkFund/aws-cli-wagon):stderr:data: remote: Enumerating objects: 81, done.        
+child_process(61351)::clone(https://github.com/SparkFund/aws-cli-wagon):stderr:data: remote: Total 81 (delta 0), reused 0 (delta 0), pack-reused 81
+child_process(61351)::clone(https://github.com/SparkFund/aws-cli-wagon):close()

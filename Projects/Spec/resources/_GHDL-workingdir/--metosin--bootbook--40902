@@ -1,0 +1,5 @@
+child_process(40902)::clone(https://github.com/metosin/bootbook):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/bootbook'...
+child_process(40902)::clone(https://github.com/metosin/bootbook):stderr:data: POST git-upload-pack (215 bytes)
+child_process(40902)::clone(https://github.com/metosin/bootbook):stderr:data: remote: Enumerating objects: 96, done.        
+child_process(40902)::clone(https://github.com/metosin/bootbook):stderr:data: remote: Total 96 (delta 0), reused 0 (delta 0), pack-reused 96        
+child_process(40902)::clone(https://github.com/metosin/bootbook):close()

@@ -1,0 +1,5 @@
+child_process(41655)::clone(https://github.com/metosin/web-schemas):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/web-schemas'...
+child_process(41655)::clone(https://github.com/metosin/web-schemas):stderr:data: POST git-upload-pack (215 bytes)
+child_process(41655)::clone(https://github.com/metosin/web-schemas):stderr:data: remote: Enumerating objects: 46, done.        
+child_process(41655)::clone(https://github.com/metosin/web-schemas):stderr:data: remote: Total 46 (delta 0), reused 0 (delta 0), pack-reused 46        
+child_process(41655)::clone(https://github.com/metosin/web-schemas):close()

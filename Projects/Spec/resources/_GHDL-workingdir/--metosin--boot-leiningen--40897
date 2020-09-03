@@ -1,0 +1,5 @@
+child_process(40897)::clone(https://github.com/metosin/boot-leiningen):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-leiningen'...
+child_process(40897)::clone(https://github.com/metosin/boot-leiningen):stderr:data: POST git-upload-pack (165 bytes)
+child_process(40897)::clone(https://github.com/metosin/boot-leiningen):stderr:data: remote: Enumerating objects: 28, done.        
+child_process(40897)::clone(https://github.com/metosin/boot-leiningen):stderr:data: remote: Total 28 (delta 0), reused 0 (delta 0), pack-reused 28        
+child_process(40897)::clone(https://github.com/metosin/boot-leiningen):close()

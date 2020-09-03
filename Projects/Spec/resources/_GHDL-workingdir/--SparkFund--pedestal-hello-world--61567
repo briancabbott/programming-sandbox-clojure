@@ -1,0 +1,5 @@
+child_process(61567)::clone(https://github.com/SparkFund/pedestal-hello-world):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/pedestal-hello-world'...
+child_process(61567)::clone(https://github.com/SparkFund/pedestal-hello-world):stderr:data: POST git-upload-pack (165 bytes)
+child_process(61567)::clone(https://github.com/SparkFund/pedestal-hello-world):stderr:data: remote: Enumerating objects: 52, done.        
+child_process(61567)::clone(https://github.com/SparkFund/pedestal-hello-world):stderr:data: remote: Total 52 (delta 0), reused 0 (delta 0), pack-reused 52        
+child_process(61567)::clone(https://github.com/SparkFund/pedestal-hello-world):close()

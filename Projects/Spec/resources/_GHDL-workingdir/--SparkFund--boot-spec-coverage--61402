@@ -1,0 +1,5 @@
+child_process(61402)::clone(https://github.com/SparkFund/boot-spec-coverage):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/boot-spec-coverage'...
+child_process(61402)::clone(https://github.com/SparkFund/boot-spec-coverage):stderr:data: POST git-upload-pack (365 bytes)
+child_process(61402)::clone(https://github.com/SparkFund/boot-spec-coverage):stderr:data: remote: Enumerating objects: 73, done.        
+child_process(61402)::clone(https://github.com/SparkFund/boot-spec-coverage):stderr:data: remote: Total 73 (delta 0), reused 0 (delta 0), pack-reused 73        
+child_process(61402)::clone(https://github.com/SparkFund/boot-spec-coverage):close()

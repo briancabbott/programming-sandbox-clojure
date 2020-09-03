@@ -1,0 +1,5 @@
+child_process(41152)::clone(https://github.com/metosin/kekkonen-template):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/kekkonen-template'...
+child_process(41152)::clone(https://github.com/metosin/kekkonen-template):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41152)::clone(https://github.com/metosin/kekkonen-template):stderr:data: remote: Enumerating objects: 87, done.        
+child_process(41152)::clone(https://github.com/metosin/kekkonen-template):stderr:data: remote: Total 87 (delta 0), reused 0 (delta 0), pack-reused 87        
+child_process(41152)::clone(https://github.com/metosin/kekkonen-template):close()

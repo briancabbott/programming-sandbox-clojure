@@ -1,0 +1,4 @@
+child_process(40885)::clone(https://github.com/metosin/boot-alt-http):stderr:data: POST git-upload-pack (365 bytes)
+child_process(40885)::clone(https://github.com/metosin/boot-alt-http):stderr:data: remote: Enumerating objects: 81, done.        
+child_process(40885)::clone(https://github.com/metosin/boot-alt-http):stderr:data: remote: Total 81 (delta 0), reused 0 (delta 0), pack-reused 81        
+child_process(40885)::clone(https://github.com/metosin/boot-alt-http):close()

@@ -1,0 +1,5 @@
+child_process(41067)::clone(https://github.com/metosin/compojure-intro):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/compojure-intro'...
+child_process(41067)::clone(https://github.com/metosin/compojure-intro):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41067)::clone(https://github.com/metosin/compojure-intro):stderr:data: remote: Enumerating objects: 79, done.        
+child_process(41067)::clone(https://github.com/metosin/compojure-intro):stderr:data: remote: Total 79 (delta 0), reused 0 (delta 0), pack-reused 79        
+child_process(41067)::clone(https://github.com/metosin/compojure-intro):close()

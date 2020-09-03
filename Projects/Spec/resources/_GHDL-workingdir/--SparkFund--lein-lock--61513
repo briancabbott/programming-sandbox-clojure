@@ -1,0 +1,5 @@
+child_process(61513)::clone(https://github.com/SparkFund/lein-lock):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/lein-lock'...
+child_process(61513)::clone(https://github.com/SparkFund/lein-lock):stderr:data: POST git-upload-pack (265 bytes)
+child_process(61513)::clone(https://github.com/SparkFund/lein-lock):stderr:data: remote: Enumerating objects: 42, done.        
+child_process(61513)::clone(https://github.com/SparkFund/lein-lock):stderr:data: remote: Total 42 (delta 0), reused 0 (delta 0), pack-reused 42        
+child_process(61513)::clone(https://github.com/SparkFund/lein-lock):close()

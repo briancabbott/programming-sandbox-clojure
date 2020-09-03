@@ -1,0 +1,5 @@
+child_process(41072)::clone(https://github.com/metosin/docker-circle-clojure):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-clojure'...
+child_process(41072)::clone(https://github.com/metosin/docker-circle-clojure):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41072)::clone(https://github.com/metosin/docker-circle-clojure):stderr:data: remote: Enumerating objects: 37, done.        
+child_process(41072)::clone(https://github.com/metosin/docker-circle-clojure):stderr:data: remote: Total 37 (delta 0), reused 0 (delta 0), pack-reused 37        
+child_process(41072)::clone(https://github.com/metosin/docker-circle-clojure):close()

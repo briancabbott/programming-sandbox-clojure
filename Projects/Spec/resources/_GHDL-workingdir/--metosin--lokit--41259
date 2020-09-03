@@ -1,0 +1,5 @@
+child_process(41259)::clone(https://github.com/metosin/lokit):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/lokit'...
+child_process(41259)::clone(https://github.com/metosin/lokit):stderr:data: POST git-upload-pack (265 bytes)
+child_process(41259)::clone(https://github.com/metosin/lokit):stderr:data: remote: Enumerating objects: 70, done.        
+child_process(41259)::clone(https://github.com/metosin/lokit):stderr:data: remote: Total 70 (delta 0), reused 0 (delta 0), pack-reused 70        
+child_process(41259)::clone(https://github.com/metosin/lokit):close()

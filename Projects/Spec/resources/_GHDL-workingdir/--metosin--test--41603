@@ -1,0 +1,4 @@
+child_process(41603)::clone(https://github.com/metosin/test):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/test'...
+child_process(41603)::clone(https://github.com/metosin/test):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41603)::clone(https://github.com/metosin/test):stderr:data: remote: Enumerating objects: 3, done.        
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3        

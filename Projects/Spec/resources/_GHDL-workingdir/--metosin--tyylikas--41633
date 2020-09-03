@@ -1,0 +1,5 @@
+child_process(41633)::clone(https://github.com/metosin/tyylikas):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tyylikas'...
+child_process(41633)::clone(https://github.com/metosin/tyylikas):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41633)::clone(https://github.com/metosin/tyylikas):stderr:data: remote: Enumerating objects: 47, done.        
+child_process(41633)::clone(https://github.com/metosin/tyylikas):stderr:data: remote: Total 47 (delta 0), reused 0 (delta 0), pack-reused 47        
+child_process(41633)::clone(https://github.com/metosin/tyylikas):close()

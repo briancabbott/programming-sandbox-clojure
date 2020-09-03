@@ -1,0 +1,5 @@
+child_process(61421)::clone(https://github.com/SparkFund/cljs-test-problem):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/cljs-test-problem'...
+child_process(61421)::clone(https://github.com/SparkFund/cljs-test-problem):stderr:data: POST git-upload-pack (165 bytes)
+child_process(61421)::clone(https://github.com/SparkFund/cljs-test-problem):stderr:data: remote: Enumerating objects: 12, done.        
+child_process(61421)::clone(https://github.com/SparkFund/cljs-test-problem):stderr:data: remote: Total 12 (delta 0), reused 0 (delta 0), pack-reused 12        
+child_process(61421)::clone(https://github.com/SparkFund/cljs-test-problem):close()

@@ -1,0 +1,5 @@
+child_process(41082)::clone(https://github.com/metosin/docker-circle-convox):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-convox'...
+child_process(41082)::clone(https://github.com/metosin/docker-circle-convox):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41082)::clone(https://github.com/metosin/docker-circle-convox):stderr:data: remote: Enumerating objects: 20, done.        
+child_process(41082)::clone(https://github.com/metosin/docker-circle-convox):stderr:data: remote: Total 20 (delta 0), reused 0 (delta 0), pack-reused 20        
+child_process(41082)::clone(https://github.com/metosin/docker-circle-convox):close()

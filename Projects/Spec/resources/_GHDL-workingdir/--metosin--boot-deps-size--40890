@@ -1,0 +1,5 @@
+child_process(40890)::clone(https://github.com/metosin/boot-deps-size):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-deps-size'...
+child_process(40890)::clone(https://github.com/metosin/boot-deps-size):stderr:data: POST git-upload-pack (215 bytes)
+child_process(40890)::clone(https://github.com/metosin/boot-deps-size):stderr:data: remote: Enumerating objects: 29, done.        
+child_process(40890)::clone(https://github.com/metosin/boot-deps-size):stderr:data: remote: Total 29 (delta 0), reused 0 (delta 0), pack-reused 29        
+child_process(40890)::clone(https://github.com/metosin/boot-deps-size):close()

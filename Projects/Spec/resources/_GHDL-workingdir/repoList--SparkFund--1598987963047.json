@@ -1,0 +1,204 @@
+{
+    "organizationName": "SparkFund",
+    "generationTime": "2020-09-01T19:19:23.058Z",
+    "repositories": [
+        {
+            "url": "https://github.com/SparkFund/aws-cli-wagon",
+            "id": "MDEwOlJlcG9zaXRvcnk3MDcyMTU5Mg==",
+            "createdAt": "2016-10-12T16:58:26Z",
+            "description": "An S3 maven wagon using the AWS CLI",
+            "diskUsage": 15,
+            "name": "aws-cli-wagon",
+            "pushedAt": "2017-02-03T18:17:59Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/aws-maven",
+            "id": "MDEwOlJlcG9zaXRvcnk2ODk3NTk2OA==",
+            "createdAt": "2016-09-23T01:16:07Z",
+            "description": null,
+            "diskUsage": 152,
+            "name": "aws-maven",
+            "pushedAt": "2016-09-23T17:49:49Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/badigeon",
+            "id": "MDEwOlJlcG9zaXRvcnkyMTA2ODY5NzM=",
+            "createdAt": "2019-09-24T19:58:36Z",
+            "description": "A Clojure build library based on tools.deps.",
+            "diskUsage": 166,
+            "name": "badigeon",
+            "pushedAt": "2019-09-11T20:34:45Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/boot-lein-generate",
+            "id": "MDEwOlJlcG9zaXRvcnk4NDMyMzU1MQ==",
+            "createdAt": "2017-03-08T13:31:52Z",
+            "description": "Generate a project.clj from your Boot project, for slightly better interop with things that don't work with Boot (like Cursive IDE)",
+            "diskUsage": 24,
+            "name": "boot-lein-generate",
+            "pushedAt": "2019-12-03T15:35:11Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/boot-spec-coverage",
+            "id": "MDEwOlJlcG9zaXRvcnk5NTkxMDA1MA==",
+            "createdAt": "2017-06-30T17:28:46Z",
+            "description": "Clojure.spec coverage checking with the Boot build tool.",
+            "diskUsage": 20,
+            "name": "boot-spec-coverage",
+            "pushedAt": "2017-07-12T14:15:14Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/cljs-test-problem",
+            "id": "MDEwOlJlcG9zaXRvcnk5MjQzNTk2OQ==",
+            "createdAt": "2017-05-25T19:12:26Z",
+            "description": "Demonstration of a bug in `boot-cljs-test`",
+            "diskUsage": 2,
+            "name": "cljs-test-problem",
+            "pushedAt": "2017-05-25T19:24:33Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/google-apps-clj",
+            "id": "MDEwOlJlcG9zaXRvcnkzNzU2MTgwNA==",
+            "createdAt": "2015-06-16T23:41:01Z",
+            "description": "A Clojure library that wraps the Google Java API for different Google Applications.",
+            "diskUsage": 234,
+            "name": "google-apps-clj",
+            "pushedAt": "2018-08-03T15:02:25Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/jimfs",
+            "id": "MDEwOlJlcG9zaXRvcnk2ODcxOTU1MA==",
+            "createdAt": "2016-09-20T14:21:56Z",
+            "description": "An in-memory file system for Java 7+",
+            "diskUsage": 2883,
+            "name": "jimfs",
+            "pushedAt": "2016-09-23T14:44:23Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/kaocha-boot",
+            "id": "MDEwOlJlcG9zaXRvcnkyMzU4MjAxNDc=",
+            "createdAt": "2020-01-23T15:09:04Z",
+            "description": "Kaocha support for Boot",
+            "diskUsage": 22,
+            "name": "kaocha-boot",
+            "pushedAt": "2020-01-23T15:33:14Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/lein-essthree",
+            "id": "MDEwOlJlcG9zaXRvcnk2ODEyMDQ3OQ==",
+            "createdAt": "2016-09-13T15:18:06Z",
+            "description": "Leiningen plugin for easy S3 project deployment and dependency resolution",
+            "diskUsage": 43,
+            "name": "lein-essthree",
+            "pushedAt": "2016-09-14T16:52:27Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/lein-lock",
+            "id": "MDEwOlJlcG9zaXRvcnkzMjkzOTE0Ng==",
+            "createdAt": "2015-03-26T16:32:13Z",
+            "description": "A Leiningen plugin to check transitive dependencies to ensure repeatable builds.",
+            "diskUsage": 102,
+            "name": "lein-lock",
+            "pushedAt": "2015-07-06T17:55:42Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/lein-types-coverage",
+            "id": "MDEwOlJlcG9zaXRvcnk0MzQ3NzM4OQ==",
+            "createdAt": "2015-10-01T03:55:15Z",
+            "description": "Runs lein test but tracks coverage of type annotations via types-to-schema.",
+            "diskUsage": 140,
+            "name": "lein-types-coverage",
+            "pushedAt": "2015-11-12T00:20:08Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/om-tools",
+            "id": "MDEwOlJlcG9zaXRvcnk4MDU1NzYxNg==",
+            "createdAt": "2017-01-31T20:10:16Z",
+            "description": "Tools for building Om applications",
+            "diskUsage": 187,
+            "name": "om-tools",
+            "pushedAt": "2017-01-31T20:23:45Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/pedestal-hello-world",
+            "id": "MDEwOlJlcG9zaXRvcnkzMjkzOTY1Ng==",
+            "createdAt": "2015-03-26T16:42:07Z",
+            "description": "Minimalistic pedestal web app",
+            "diskUsage": 101,
+            "name": "pedestal-hello-world",
+            "pushedAt": "2015-03-26T16:44:51Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/pow",
+            "id": "MDEwOlJlcG9zaXRvcnkyNzEwODAwNjc=",
+            "createdAt": "2020-06-09T18:28:31Z",
+            "description": "Robust, modular, and extendable user authentication system",
+            "diskUsage": 1615,
+            "name": "pow",
+            "pushedAt": "2020-06-09T18:30:18Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/sails-forth",
+            "id": "MDEwOlJlcG9zaXRvcnk0OTE1MDM2Mg==",
+            "createdAt": "2016-01-06T17:27:54Z",
+            "description": "A salesforce library designed to provide idiomatic clojure representations of salesforce data and metadata",
+            "diskUsage": 244,
+            "name": "sails-forth",
+            "pushedAt": "2020-01-14T20:32:55Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/spec-tacular",
+            "id": "MDEwOlJlcG9zaXRvcnkyMzQ0Mzg4MA==",
+            "createdAt": "2014-08-28T21:42:14Z",
+            "description": "Make the border between Clojure and Datomic a more convenient and safe place to live.",
+            "diskUsage": 754,
+            "name": "spec-tacular",
+            "pushedAt": "2018-08-03T15:04:51Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/tools-aws",
+            "id": "MDEwOlJlcG9zaXRvcnkyNjcwNjIyMjg=",
+            "createdAt": "2020-05-26T14:15:52Z",
+            "description": "Using infrastructure-as-data to demystify CloudFormation operations",
+            "diskUsage": 33,
+            "name": "tools-aws",
+            "pushedAt": "2020-05-28T15:49:01Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/tools-cli",
+            "id": "MDEwOlJlcG9zaXRvcnkyNjYxMjc0ODU=",
+            "createdAt": "2020-05-22T14:14:28Z",
+            "description": "Simple tools for building CLI apps, interacting with the CLI, and building a consistent CLI experience across projects.",
+            "diskUsage": 27,
+            "name": "tools-cli",
+            "pushedAt": "2020-05-28T15:59:11Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/types-to-schema",
+            "id": "MDEwOlJlcG9zaXRvcnkzNzU0OTE4NA==",
+            "createdAt": "2015-06-16T18:43:07Z",
+            "description": "Converts Typed Clojure types to Prismatic Schemas for runtime checking",
+            "diskUsage": 36,
+            "name": "types-to-schema",
+            "pushedAt": "2016-04-19T00:34:08Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/useful-specs",
+            "id": "MDEwOlJlcG9zaXRvcnk2MjgzODQ2NQ==",
+            "createdAt": "2016-07-07T21:12:52Z",
+            "description": "A collection of useful specs for clojure.spec",
+            "diskUsage": 30,
+            "name": "useful-specs",
+            "pushedAt": "2018-01-15T10:16:38Z"
+        },
+        {
+            "url": "https://github.com/SparkFund/vase",
+            "id": "MDEwOlJlcG9zaXRvcnk5Nzg5MzU2Nw==",
+            "createdAt": "2017-07-21T01:40:19Z",
+            "description": "Data driven microservices",
+            "diskUsage": 1788,
+            "name": "vase",
+            "pushedAt": "2017-07-21T16:22:00Z"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+child_process(40937)::clone(https://github.com/metosin/c2):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/c2'...
+child_process(40937)::clone(https://github.com/metosin/c2):stderr:data: POST git-upload-pack (165 bytes)
+child_process(40937)::clone(https://github.com/metosin/c2):stderr:data: remote: Enumerating objects: 43, done.        
+child_process(40937)::clone(https://github.com/metosin/c2):close()

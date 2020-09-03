@@ -1,0 +1,5 @@
+child_process(61530)::clone(https://github.com/SparkFund/lein-types-coverage):stderr:data: Cloning into 'undefined\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/lein-types-coverage'...
+child_process(61530)::clone(https://github.com/SparkFund/lein-types-coverage):stderr:data: POST git-upload-pack (265 bytes)
+child_process(61530)::clone(https://github.com/SparkFund/lein-types-coverage):stderr:data: remote: Enumerating objects: 28, done.        
+child_process(61530)::clone(https://github.com/SparkFund/lein-types-coverage):stderr:data: remote: Total 28 (delta 0), reused 0 (delta 0), pack-reused 28        
+child_process(61530)::clone(https://github.com/SparkFund/lein-types-coverage):close()

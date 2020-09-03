@@ -1,0 +1,5 @@
+child_process(41087)::clone(https://github.com/metosin/docker-circle-lein):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-lein'...
+child_process(41087)::clone(https://github.com/metosin/docker-circle-lein):stderr:data: POST git-upload-pack (165 bytes)
+child_process(41087)::clone(https://github.com/metosin/docker-circle-lein):stderr:data: remote: Enumerating objects: 7, done.        
+remote: Total 7 (delta 0), reused 0 (delta 0), pack-reused 7        
+child_process(41087)::clone(https://github.com/metosin/docker-circle-lein):close()

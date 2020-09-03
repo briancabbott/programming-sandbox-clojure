@@ -1,0 +1,4 @@
+child_process(40989)::clone(https://github.com/metosin/clojure-finland-2018-05-30-cljs-ws-demo):stderr:data: Cloning into 'undefined\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clojure-finland-2018-05-30-cljs-ws-demo'...
+child_process(40989)::clone(https://github.com/metosin/clojure-finland-2018-05-30-cljs-ws-demo):stderr:data: POST git-upload-pack (165 bytes)
+child_process(40989)::clone(https://github.com/metosin/clojure-finland-2018-05-30-cljs-ws-demo):stderr:data: remote: Enumerating objects: 38, done.        
+child_process(40989)::clone(https://github.com/metosin/clojure-finland-2018-05-30-cljs-ws-demo):close()
