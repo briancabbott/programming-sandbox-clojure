@@ -1,0 +1,258 @@
+= HTTP
+:toc: macro
+
+Crux offers a REST API layer in the `crux-http-server` module that allows you to send transactions and run queries over HTTP.
+
+image::remote-cluster-mode.svg?sanitize=true[Remote Cluster Mode,450,145,align="centre"]
+
+toc::[]
+
+Using Crux in this manner is a valid use-case but it cannot support all of the features and benefits that running the Crux node inside of your application provides, in particular the ability to efficiently combine custom code with multiple in-process Datalog queries.
+
+Your application only needs to communicate with one Crux node when using the REST API.
+Multiple Crux nodes can placed be behind a HTTP load balancer to spread the writes and reads over a horizontally-scaled cluster transparently to the application.
+Each Crux node in such a cluster will be independently catching up with the head of the transaction log, and since different queries might go to different nodes, you have to be slightly conscious of read consistency when designing your application to use Crux in this way.
+Fortunately, you can readily achieve read-your-writes consistency with the ability to query consistent point-in-time snapshots using specific temporal coordinates.
+
+The REST API also provides an experimental endpoint for SPARQL 1.1 Protocol queries under `/sparql/`, rewriting the query into the Crux Datalog dialect.
+Only a small subset of SPARQL is supported and no other RDF features are available.
+
+[#start-http-server]
+== Starting an HTTP Server
+
+=== Project Dependency
+
+[source,clojure]
+----
+include::example$deps.edn[tags=HTTPDeps]
+----
+
+You can start up a *HTTP server* on a node by including `crux.http-server/server` in your node configuration, optionally passing the server port:
+
+.JSON
+[source,json]
+----
+{
+  "crux.http-server/server": {
+    "port": 3000,
+    ...
+  }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.http-server/server {:port 3000
+                           ...}
+----
+
+// TODO Authorization section
+
+=== Parameters
+
+* `port` (int, default 3000)
+* `read-only?` (boolean, default false): start the HTTP server in read-only mode
+* `jwks` (string): https://jwt.io/[JSON Web Token] (JWT) key set to authorise requests against - `{"keys": [...]}`
+
+[#start-remote-client]
+== Using a Remote API Client
+
+In addition to calling the HTTP endpoints directly you can also use the remote API client, which implements the same interfaces/protocols as a local Crux node, where possible.
+
+=== Project Dependency
+
+[source,clojure]
+----
+include::example$deps.edn[tags=HTTPClientDeps]
+----
+
+To connect to a pre-existing remote node, you need a URL to the node and the above on your classpath.
+We can then call `crux.api/new-api-client`, passing the URL.
+If the node was started on `localhost:3000`, you can connect to it by doing the following:
+
+[source,clojure]
+----
+include::example$src/docs/examples.clj[tags=start-http-client]
+----
+
+[#http-api]
+== Using the HTTP API
+
+.API
+[#table-conversion%header,cols="d,d,d"]
+|===
+|uri|method|description
+|<<#entity, `/entity/[:key]`>>|GET|Returns an entity for a given ID and optional valid-time/transaction-time co-ordinates
+|<<#entity-tx, `/entity-tx/[:key]`>>|GET|Returns the transaction that most recently set a key
+|<<#entity, `/entity-history/[:key]`>>|GET|Returns the history of the given entity and optional valid-time/transaction-time co-ordinates
+|<<#query, `/query`>>|POST|Takes a datalog query and returns its results
+|<<#sync, `/sync`>>|GET| Wait until the Kafka consumer's lag is back to 0
+|<<#tx-log, `/tx-log`>>|GET| Returns a list of all transactions
+|<<#tx-log-post, `/tx-log`>>|POST|The "write" endpoint, to post transactions.
+|===
+
+[#entity]
+=== GET `/entity/[:key]`
+
+Takes a key and, optionally, a `:valid-time` and/or `:transact-time` (defaulting to now). Returns the value stored under that key at those times.
+
+See xref:bitemporality.adoc[Bitemporality] for more information.
+
+[source,bash]
+----
+curl -X GET \
+     -H "Content-Type: application/edn" \
+     $nodeURL/entity/:tommy
+----
+
+[source,clj]
+----
+{:crux.db/id :tommy, :name "Tommy", :last-name "Petrov"}
+----
+
+[source,bash]
+----
+curl -X GET \
+     -H "Content-Type: application/edn" \
+     $nodeURL/entity/:tommy?valid-time=1999-01-08T14%3A03%3A27%3A254-00%3A00
+----
+
+[source,clj]
+----
+nil
+----
+
+[#entity-tx]
+=== GET `/entity-tx`
+
+Takes a key and, optionally, `:valid-time` and/or `:transact-time` (defaulting to now). Returns the `:put` transaction that most recently set that key at those times.
+
+See xref:bitemporality.adoc[Bitemporality] for more information.
+
+[source,bash]
+----
+curl -X GET \
+     -H "Content-Type: application/edn" \
+     $nodeURL/entity-tx/:foobar
+----
+[source,clj]
+----
+{:crux.db/id "8843d7f92416211de9ebb963ff4ce28125932878",
+ :crux.db/content-hash "7af0444315845ab3efdfbdfa516e68952c1486f2",
+ :crux.db/valid-time #inst "2019-01-08T16:34:47.738-00:00",
+ :crux.tx/tx-id 0,
+ :crux.tx/tx-time #inst "2019-01-08T16:34:47.738-00:00"}
+----
+
+[#entity-history]
+=== GET `/entity-history/[:key]`
+
+Returns the history for the given entity
+
+[source,bash]
+----
+curl -X GET $nodeURL/entity-history/:ivan?sort-order=desc
+----
+
+Also accepts the following as optional query parameters:
+* `with-corrections` - includes bitemporal corrections in the response, inline, sorted by valid-time then transaction-time (default false)
+* `with-docs` - includes the documents in the response sequence, under the `:crux.db/doc` key (default false)
+* `start-valid-time`, `start-transaction-time` - bitemporal co-ordinates to start at (inclusive, default unbounded)
+* `end-valid-time`, `end-transaction-time` - bitemporal co-ordinates to stop at (exclusive, default unbounded)
+
+[source,clj]
+----
+[{:crux.db/id "a15f8b81a160b4eebe5c84e9e3b65c87b9b2f18e",
+  :crux.db/content-hash "c28f6d258397651106b7cb24bb0d3be234dc8bd1",
+  :crux.db/valid-time #inst "2019-01-07T14:57:08.462-00:00",
+  :crux.tx/tx-id 14,
+  :crux.tx/tx-time #inst "2019-01-07T16:51:55.185-00:00"
+  :crux.db/doc {...}}
+
+ {...}]
+----
+
+[#query]
+=== POST `/query`
+
+Takes a Datalog query and returns its results.
+
+[source,bash]
+----
+curl -X POST \
+     -H "Content-Type: application/edn" \
+     -d '{:query {:find [e] :where [[e :last-name "Petrov"]]}}' \
+     $nodeURL/query
+----
+
+[source,clj]
+----
+#{[:boris][:ivan]}
+----
+
+Note that you are able to add `:full-results? true` to the query map to easily retrieve the source documents relating to the entities in the result set. For instance to retrieve _all_ documents in a single query:
+
+[source,clj]
+----
+curl -X POST \
+     -H "Content-Type: application/edn" \
+     -d '{:query {:find [e] :where [[e :crux.db/id _]] :full-results? true}}' \
+     $nodeURL/query
+----
+
+[#sync]
+=== GET `/sync`
+
+Wait until the Kafka consumer's lag is back to 0 (i.e. when it no longer has pending transactions to write). Timeout is 10 seconds by default, but can be specified as a parameter in milliseconds. Returns the transaction time of the most recent transaction.
+
+[source,bash]
+----
+curl -X GET $nodeURL/sync?timeout=500
+----
+
+[source,clj]
+----
+#inst "2019-01-08T11:06:41.869-00:00"
+----
+
+[#tx-log]
+=== GET `/tx-log`
+
+Returns a list of all transactions, from oldest to newest transaction time.
+
+[source,bash]
+----
+curl -X GET $nodeURL/tx-log
+----
+
+[source,clj]
+----
+({:crux.tx/tx-time #inst "2019-01-07T15:11:13.411-00:00",
+  :crux.api/tx-ops [[
+    :crux.tx/put "c28f6d258397651106b7cb24bb0d3be234dc8bd1"
+    #inst "2019-01-07T14:57:08.462-00:00"]],
+  :crux.tx/tx-id 0}
+
+ {:crux.tx/tx-time #inst "2019-01-07T15:11:32.284-00:00",
+  ...})
+----
+
+[#tx-log-post]
+=== POST `/tx-log`
+
+Takes a vector of transactions (any combination of `:put`, `:delete`, `:match`, and `:evict`) and executes them in order. This is the only "write" endpoint.
+
+[source,bash]
+----
+curl -X POST \
+     -H "Content-Type: application/edn" \
+     -d '[[:crux.tx/put {:crux.db/id :ivan, :name "Ivan" :last-name "Petrov"}],
+          [:crux.tx/put {:crux.db/id :boris, :name "Boris" :last-name "Petrov"}],
+          [:crux.tx/delete :maria  #inst "2012-05-07T14:57:08.462-00:00"]]' \
+     $nodeURL/tx-log
+----
+[source,clj]
+----
+{:crux.tx/tx-id 7, :crux.tx/tx-time #inst "2019-01-07T16:14:19.675-00:00"}
+----

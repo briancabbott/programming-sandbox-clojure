@@ -1,0 +1,266 @@
+= Monitoring Crux
+:toc: macro
+
+Crux can expose metrics about a node via https://metrics.dropwizard.io/4.1.2/[Dropwizard] to https://prometheus.io/[Prometheus], AWS's CloudWatch, and Java's JMX.
+
+We expose metrics about transaction ingestion and running queries; if you use RocksDB you can also xref:rocksdb.adoc#monitoring[expose internal RocksDB metrics].
+
+toc::[levels=1]
+
+== Project Dependency
+
+In order to use any of the `crux-metrics` reporters, you will need to include the following dependency on `crux-metrics`:
+
+.deps.edn
+[source,clojure]
+----
+juxt/crux-metrics {:mvn/version "20.09-1.11.0-beta"}
+----
+
+.pom.xml
+[source,xml]
+----
+<dependency>
+    <groupId>juxt</groupId>
+    <artifactId>crux-metrics</artifactId>
+    <version>20.09-1.11.0-beta</version>
+</dependency>
+----
+
+You will also need to include dependencies for your individual reporters - these are outlined below.
+
+== Metrics module
+
+The Crux metric reporters depend on a common metrics module:
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics/metrics": { ... },
+}
+----
+
+You can omit this if you're happy with its default parameters.
+
+=== Parameters
+
+* `with-indexer-metrics?` (boolean, default true): includes indexer metrics in the metrics registry
+* `with-query-metrics?` (boolean, default true): includes query metrics in the metrics registry
+
+[#prometheus-reporter]
+== Prometheus reporter
+
+This reporter pushes metrics to a Prometheus 'Pushgateway' at regular intervals.
+
+You will need to add the following dependencies, alongside `crux-metrics`, in your project:
+
+=== Additional dependencies
+
+.deps.edn
+[source,clojure]
+----
+org.dhatim/dropwizard-prometheus {:mvn/version "2.2.0"}
+io.prometheus/simpleclient_pushgateway {:mvn/version "0.8.1"}
+io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.1"}
+io.prometheus/simpleclient_hotspot {:mvn/version "0.8.1"}
+clj-commons/iapetos {:mvn/version "0.1.9"}
+----
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.prometheus/reporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.prometheus/reporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `push-gateway` (string, required)
+* `report-frequency` (string/`Duration`, default `"PT1S"`)
+* `prefix` (string): prefix all metric titles with this string
+
+[#prometheus-http]
+== Prometheus HTTP exporter
+
+The Prometheus HTTP exporter starts a standalone server hosting Prometheus metrics.
+
+=== Additional dependencies
+
+.deps.edn
+[source,clojure]
+----
+org.dhatim/dropwizard-prometheus {:mvn/version "2.2.0"}
+io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.1"}
+io.prometheus/simpleclient_hotspot {:mvn/version "0.8.1"}
+io.prometheus/simpleclient_httpserver {:mvn/version "0.8.1"}
+clj-commons/iapetos {:mvn/version "0.1.9"}
+----
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.prometheus/http-exporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.prometheus/http-exporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `port` (int, default 8080) port number for Prometheus client server.
+* `jvm-metrics?` (boolean, default false): includes JVM metrics in the metrics dump
+
+[#cloudwatch]
+== AWS Cloudwatch
+
+In addition to extra dependencies, you'll need to ensure that your application has the `cloudwatch:PutMetricData` permission.
+
+=== Additional dependencies
+
+.deps.edn
+[source,clojure]
+----
+io.github.azagniotov/dropwizard-metrics-cloudwatch {:mvn/version "2.0.3"}
+software.amazon.awssdk/cloudwatch {:mvn/version "2.10.61"}
+----
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.cloudwatch/reporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.cloudwatch/reporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `high-resolution?` (boolean, default false): increase push rate from 1 minute to 1 second
+* `dimensions` (`Map<String, String>`): dimensions to include in the pushed metrics
+* `jvm-metrics?` (boolean, default false): includes JVM metrics in the pushed metrics
+* `region` (string): override default AWS region for uploading metrics
+* `ignore-rules` (`List<String>`): a list of metrics to ignore, in gitignore format. e.g. `["crux.tx" "!crux.tx.ingest"]` would ignore `crux.tx.*`, except `crux.tx.ingest`
+* `dry-run?` (boolean, default false): reporter outputs to a local SLF4J logger instead
+* `dry-run-report-frequency` (string/`Duration`, default `"PT1S"`)
+
+[#jmx]
+== JMX
+
+=== Additional Dependencies
+
+.deps.edn
+[source,clj]
+----
+io.dropwizard.metrics/metrics-jmx {:mvn/version "4.1.2"}
+----
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.jmx/reporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.jmx/reporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `domain` (string): custom JMS domain
+* `rate-unit` (`TimeUnit`, default 'seconds'): unit to report rates
+* `duration-unit` (`TimeUnit`, default 'seconds'): unit to report durations
+
+[#console]
+== Console
+
+The console reporter logs metrics to standard-out at regular intervals.
+
+It has no additional dependencies.
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.console/reporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.console/reporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `report-frequency` (string/`Duration`, default `"PT1S"`)
+* `rate-unit` (`TimeUnit`, default 'seconds'): unit to report rates
+* `duration-unit` (`TimeUnit`, default 'seconds'): unit to report durations
+
+[#csv]
+== CSV
+
+The CSV reporter logs metrics to a CSV file at regular intervals.
+
+It has no additional dependencies.
+
+=== Node configuration
+
+.JSON
+[source,json]
+----
+{
+  "crux.metrics.csv/reporter": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux.metrics.csv/reporter { ... }}
+----
+
+=== Parameters
+
+* `registry` (registry, defaults to shared registry)
+* `output-file` (string/`File`/`Path`, required)
+* `report-frequency` (string/`Duration`, default `"PT1S"`)
+* `rate-unit` (`TimeUnit`, default 'seconds'): unit to report rates
+* `duration-unit` (`TimeUnit`, default 'seconds'): unit to report durations

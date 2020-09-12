@@ -1,0 +1,26 @@
+build
+target
+out
+lib
+pom.xml
+# use glob syntax.
+syntax: glob
+*.ser
+*.class
+*.jar
+*~
+.DS_Store
+*.#*
+*#*
+*.classpath
+*.project
+*.settings
+*.pyc
+*.dot
+.cake/
+.lein-failures
+.lein-deps-sum
+.idea
+*.ipr
+*.iml
+*.iws

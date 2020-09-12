@@ -1,0 +1,23 @@
+= Crux SQL
+
+SQL adapter for Crux making use of https://calcite.apache.org/[Apache Calcite].
+
+`crux-sql` runs in-process as part of the Crux node as a Crux module.
+
+.deps.edn
+[source,clojure]
+----
+juxt/crux-sql {:mvn/version "20.09-1.11.0-alpha"}
+----
+
+.pom.xml
+[source,xml]
+----
+<dependency>
+    <groupId>juxt</groupId>
+    <artifactId>crux-sql</artifactId>
+    <version>20.09-1.11.0-alpha</version>
+</dependency>
+----
+
+For more details, see the https://opencrux.com/reference/sql.html[Crux SQL documentation]

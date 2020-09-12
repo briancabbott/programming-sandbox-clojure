@@ -1,0 +1,93 @@
+= RocksDB
+
+https://rocksdb.org/[RocksDB] is often used as the data store for Crux's query indices, but can also be used as a transaction log and/or document store in single node clusters.
+
+== Project Dependency
+
+In order to use RocksDB within Crux, you must first add RocksDB as a project dependency:
+
+.deps.edn
+[source,clojure]
+----
+juxt/crux-rocksdb {:mvn/version "20.09-1.11.0-beta"}
+----
+
+.pom.xml
+[source,xml]
+----
+<dependency>
+    <groupId>juxt</groupId>
+    <artifactId>crux-rocksdb</artifactId>
+    <version>20.09-1.11.0-beta</version>
+</dependency>
+----
+
+== Using RocksDB
+
+Replace the implementation of the desired component with `+crux.rocksdb/->kv-store+`
+
+.JSON
+[source,json]
+----
+{
+  "crux/indexer": {
+    "kv-store": {
+      "crux/module": "crux.rocksdb/->kv-store",
+      "db-dir": "/tmp/rocksdb"
+    }
+  },
+
+  "crux/document-store": { ... },
+  "crux/tx-log": { ... }
+}
+----
+
+.Clojure/EDN
+[source,clojure]
+----
+{:crux/indexer {:kv-store {:crux/module 'crux.rocksdb/->kv-store
+                           :db-dir (io/file "/tmp/rocksdb")}}
+ :crux/document-store {...}
+ :crux/tx-log {...}}
+----
+
+== Dependencies
+
+* `metrics` (function, default no-op): enable xref:#monitoring[RocksDB metrics].
+
+== Parameters
+
+* `db-dir` (required, string/`File`/`Path`): path to RocksDB data directory
+* `sync?` (boolean, default false): sync to disk after every write
+* `disable-wal?` (boolean): disables the write-ahead log
+* `db-options` (RocksDB https://javadoc.io/static/org.rocksdb/rocksdbjni/6.8.1/org/rocksdb/Options.html[`Options`] object): extra options to pass directly to RocksDB.
+
+
+[#monitoring]
+== Monitoring RocksDB
+
+To include RocksDB metrics in monitoring, override the `metrics` dependency:
+
+.JSON
+[source,json]
+----
+{
+  "crux/indexer": {
+    "kv-store": {
+      "crux/module": "crux.rocksdb/->kv-store",
+      "metrics": {
+        "crux/module": "crux.rocksdb.metrics/->metrics"
+      }
+      ...
+    }
+  },
+
+  "crux/document-store": { ... },
+  "crux/tx-log": { ... }
+}
+----
+
+=== Parameters
+
+* `instance-name` (string, default `"rocksdb"`): unique name for this instance of RocksDB, used in metrics domains
+* `sample-window` (duration, default 3s): sample window of statistics collector

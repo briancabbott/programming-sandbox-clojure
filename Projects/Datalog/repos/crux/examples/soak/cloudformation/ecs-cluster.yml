@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This stack starts an example load balanced Fargate task.
+
+Parameters:
+  VPCId:
+    Type: String
+  LoadBalancerSG:
+    Type: String
+
+Resources:
+  # ECS Resources
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: 'crux-soak'
+      ClusterSettings:
+        - Name: 'containerInsights'
+          Value: 'enabled'
+
+  FargateContainerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Access to the Fargate containers
+      VpcId: !Ref VPCId
+
+  EcsSecurityGroupIngressFromPublicALB:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      Description: Ingress from the public ALB
+      GroupId: !Ref 'FargateContainerSecurityGroup'
+      IpProtocol: -1
+      SourceSecurityGroupId: !Ref 'LoadBalancerSG'
+
+Outputs:
+  FargateContainerSecurityGroup:
+    Description: The Security Group for the Fargate Containers
+    Value: !Ref 'FargateContainerSecurityGroup'
+  ECSClusterARN:
+    Description: The ARN for the ECS cluster
+    Value: !GetAtt ["ECSCluster", "Arn"]

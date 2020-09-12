@@ -1,0 +1,21 @@
+= crux-kafka
+
+This Crux module allows you to use Apache's https://kafka.apache.org[Kafka] as Crux's 'transaction log' and/or 'document store', for strong durability and scalability guarantees.
+
+.deps.edn
+[source,clojure]
+----
+juxt/crux-kafka {:mvn/version "20.09-1.11.0-beta"}
+----
+
+.pom.xml
+[source,xml]
+----
+<dependency>
+    <groupId>juxt</groupId>
+    <artifactId>crux-kafka</artifactId>
+    <version>20.09-1.11.0-beta</version>
+</dependency>
+----
+
+For more details, see the https://opencrux.com/reference/kafka.html[Kafka documentation]

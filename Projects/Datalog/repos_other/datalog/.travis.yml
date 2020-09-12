@@ -1,0 +1,14 @@
+language: erlang
+dist: trusty
+
+script:
+   - make
+   - make test
+   - ./rebar3 coveralls send
+
+otp_release:
+   - 21.2
+   - 20.3
+   - 19.3
+   - 18.3
+

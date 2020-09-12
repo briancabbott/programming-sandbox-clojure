@@ -1,0 +1,13 @@
+*.*~
+*.log
+*.aux
+*.beam
+*.dump
+*.tag.gz
+*.tgz
+_build/
+tests/
+rebar3
+*_leex.erl
+*_yeec.erl
+*.sublime-*

@@ -1,0 +1,19 @@
+{application, datalog,
+   [
+      {description, "datalog is a query language based on the logic programming paradigm"},
+      {vsn,         "git"},
+      {modules,     []},
+      {registered,  []},
+      {applications,[
+         kernel
+        ,stdlib
+      ]},
+      {env, []},
+
+      {licenses, ["Apache"]},
+      {maintainers, ["Dmitry Kolesnikov"]},
+      {links, [
+         {"GitHub", "https://github.com/fogfish/datalog"}
+      ]}
+   ]
+}.  

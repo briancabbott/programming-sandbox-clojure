@@ -1,0 +1,346 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A stack for running Crux Benchmarks
+
+Resources:
+  # ECS Resources
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: 'crux-bench'
+      ClusterSettings:
+        - Name: 'containerInsights'
+          Value: 'enabled'
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: 'crux-bench'
+      RetentionInDays: 365
+
+  ECRRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: 'crux-bench'
+      LifecyclePolicy:
+        LifecyclePolicyText: |
+          {
+          "rules": [
+          {
+            "rulePriority": 1,
+            "description": "Only keep latest five images of master",
+            "selection": {
+              "tagStatus": "tagged",
+              "tagPrefixList": ["master"],
+              "countType": "imageCountMoreThan",
+              "countNumber": 5
+            },
+            "action": { "type": "expire" }
+          },
+          {
+            "rulePriority": 2,
+            "description": "Only keep master-images for 14 days",
+            "selection": {
+              "tagStatus": "tagged",
+              "tagPrefixList": ["master-"],
+              "countType": "sinceImagePushed",
+              "countNumber": 14,
+              "countUnit": "days"
+            },
+            "action": { "type": "expire" }
+          },
+          {
+            "rulePriority": 3,
+            "description": "Only keep commit-sha images for 5 days",
+            "selection": {
+              "tagStatus": "tagged",
+              "tagPrefixList": ["commit-"],
+              "countType": "sinceImagePushed",
+              "countNumber": 5,
+              "countUnit": "days"
+            },
+            "action": { "type": "expire" }
+          },
+          {
+            "rulePriority": 4,
+            "description": "Delete untagged images",
+            "selection": {
+              "tagStatus": "untagged",
+              "countType": "imageCountMoreThan",
+              "countNumber": 1
+            },
+            "action": { "type": "expire" }
+          }]
+          },
+
+
+  ECSTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: [ecs-tasks.amazonaws.com]
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: AmazonECSTaskExecutionRolePolicy
+          PolicyDocument:
+            Statement:
+            - Effect: Allow
+              Action:
+                # Allow the ECS Tasks to download images from ECR
+                - 'ecr:GetAuthorizationToken'
+                - 'ecr:BatchCheckLayerAvailability'
+                - 'ecr:GetDownloadUrlForLayer'
+                - 'ecr:BatchGetImage'
+
+                # Allow the ECS tasks to upload logs to CloudWatch
+                - 'logs:CreateLogStream'
+                - 'logs:PutLogEvents'
+
+                # Allow the ECS tasks to get secret values from the secrets manager
+                - 'secretsmanager:GetSecretValue'
+
+                # Allow the ECS tasks to upload/download from s3
+                - 's3:PutObject'
+                - 's3:GetObject'
+              Resource: '*'
+
+  ECSTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: [ecs-tasks.amazonaws.com]
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: AmazonECSTaskRolePolicy
+          PolicyDocument:
+            Statement:
+            - Effect: Allow
+              Action:
+                # Allow the ECS tasks to upload/download from s3
+                - 's3:PutObject'
+                - 's3:GetObject'
+
+                # Put metric data in cloudwatch
+                - 'cloudwatch:PutMetricData'
+
+                # Perform cloudwatch log queries
+                - 'logs:StartQuery'
+                - 'logs:GetQueryResults'
+
+                # Allow the ECS tasks to send emails via SES
+                - 'ses:SendEmail'
+              Resource: '*'
+
+  BenchBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 'crux-bench'
+
+  BenchTask:
+    Type: AWS::ECS::TaskDefinition
+    DependsOn:
+      - ECRRepository
+      - LogGroup
+    Properties:
+      Cpu: '4 vCPU'
+      Memory: '12GB'
+      Family: 'crux-bench'
+      ExecutionRoleArn:
+        Fn::GetAtt: ["ECSTaskExecutionRole", "Arn"]
+      TaskRoleArn:
+        Fn::GetAtt: ["ECSTaskRole", "Arn"]
+      RequiresCompatibilities:
+        - 'FARGATE'
+      NetworkMode: 'awsvpc'
+      ContainerDefinitions:
+        - Name: 'zookeeper-container'
+          Cpu: 1024
+          Memory: 2048
+          Image: confluentinc/cp-zookeeper:5.3.1
+          Essential: true
+          Environment:
+            - Name: 'ZOOKEEPER_CLIENT_PORT'
+              Value: '2181'
+            - Name: 'ZOOKEEPER_TICK_TIME'
+              Value: '2000'
+          PortMappings:
+            - ContainerPort: 2181
+        - Name: 'broker-container'
+          Cpu: 1024
+          Memory: 2048
+          Image: confluentinc/cp-enterprise-kafka:5.3.1
+          DependsOn:
+            - Condition: 'START'
+              ContainerName: 'zookeeper-container'
+          Essential: true
+          Environment:
+            - Name: 'KAFKA_BROKER_ID'
+              Value: '1'
+            - Name: 'KAFKA_ZOOKEEPER_CONNECT'
+              Value: 'localhost:2181'
+            - Name: 'KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR'
+              Value: 1
+            - Name: 'KAFKA_ADVERTISED_LISTENERS'
+              Value: PLAINTEXT://localhost:9092
+          PortMappings:
+            - ContainerPort: 9092
+        - Name: 'bench-container'
+          Cpu: 2048
+          Memory: 8146
+          Image: '955308952094.dkr.ecr.eu-west-2.amazonaws.com/crux-bench:master'
+          Essential: true
+          Secrets:
+            - Name: "SLACK_URL"
+              ValueFrom:
+                "arn:aws:secretsmanager:eu-west-2:955308952094:secret:bench/slack-url-uumMHQ"
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-region: 'eu-west-2'
+              awslogs-group: !Ref LogGroup
+              awslogs-stream-prefix: ecs
+
+  BenchTaskLatest:
+    Type: AWS::ECS::TaskDefinition
+    DependsOn:
+      - ECRRepository
+      - LogGroup
+    Properties:
+      Cpu: '4 vCPU'
+      Memory: '12GB'
+      Family: 'crux-bench-latest'
+      ExecutionRoleArn:
+        Fn::GetAtt: ["ECSTaskExecutionRole", "Arn"]
+      TaskRoleArn:
+        Fn::GetAtt: ["ECSTaskRole", "Arn"]
+      RequiresCompatibilities:
+        - 'FARGATE'
+      NetworkMode: 'awsvpc'
+      ContainerDefinitions:
+        - Name: 'zookeeper-container'
+          Cpu: 1024
+          Memory: 2048
+          Image: confluentinc/cp-zookeeper:5.3.1
+          Essential: true
+          Environment:
+            - Name: 'ZOOKEEPER_CLIENT_PORT'
+              Value: '2181'
+            - Name: 'ZOOKEEPER_TICK_TIME'
+              Value: '2000'
+          PortMappings:
+            - ContainerPort: 2181
+        - Name: 'broker-container'
+          Cpu: 1024
+          Memory: 2048
+          Image: confluentinc/cp-enterprise-kafka:5.3.1
+          DependsOn:
+            - Condition: 'START'
+              ContainerName: 'zookeeper-container'
+          Essential: true
+          Environment:
+            - Name: 'KAFKA_BROKER_ID'
+              Value: '1'
+            - Name: 'KAFKA_ZOOKEEPER_CONNECT'
+              Value: 'localhost:2181'
+            - Name: 'KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR'
+              Value: 1
+            - Name: 'KAFKA_ADVERTISED_LISTENERS'
+              Value: PLAINTEXT://localhost:9092
+          PortMappings:
+            - ContainerPort: 9092
+        - Name: 'bench-container'
+          Cpu: 2048
+          Memory: 8146
+          Image: '955308952094.dkr.ecr.eu-west-2.amazonaws.com/crux-bench:latest'
+          DependsOn:
+            - Condition: 'START'
+              ContainerName: 'broker-container'
+          Essential: true
+          Secrets:
+            - Name: "SLACK_URL"
+              ValueFrom:
+                "arn:aws:secretsmanager:eu-west-2:955308952094:secret:bench/slack-url-uumMHQ"
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-region: 'eu-west-2'
+              awslogs-group: !Ref LogGroup
+              awslogs-stream-prefix: ecs
+
+  TaskSchedulerRole:
+     Type: AWS::IAM::Role
+     Properties:
+       AssumeRolePolicyDocument:
+         Version: "2012-10-17"
+         Statement:
+           - Effect: "Allow"
+             Principal:
+               Service:
+                 - "events.amazonaws.com"
+             Action:
+               - "sts:AssumeRole"
+       Path: /
+       Policies:
+         - PolicyDocument:
+             Statement:
+               - Effect: "Allow"
+                 Condition:
+                   ArnEquals:
+                     ecs:cluster:
+                       Fn::GetAtt: ["ECSCluster", "Arn"]
+                 Action: "ecs:RunTask"
+                 Resource: "*"
+               - Effect: "Allow"
+                 Condition:
+                   ArnEquals:
+                     ecs:cluster:
+                       Fn::GetAtt: ["ECSCluster", "Arn"]
+                 Action:
+                   - "iam:ListInstanceProfiles"
+                   - "iam:ListRoles"
+                   - "iam:PassRole"
+                 Resource: "*"
+           PolicyName: "TaskSchedulerPolicy"
+
+  TaskSchedule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: "crux-bench-scheduler"
+      ScheduleExpression: "cron(0 0 ? * MON-FRI *)"
+      State: "ENABLED"
+      Targets:
+        - Id: "crux-bench"
+          RoleArn:
+            Fn::GetAtt: ["TaskSchedulerRole", "Arn"]
+          EcsParameters:
+            LaunchType: "FARGATE"
+            NetworkConfiguration:
+              AwsVpcConfiguration:
+                AssignPublicIp: "ENABLED"
+                SecurityGroups:
+                  - "sg-0255e869"
+                Subnets:
+                  - "subnet-5140ba2b"
+            TaskDefinitionArn:
+              Ref: "BenchTask"
+            TaskCount: 1
+          Arn:
+            Fn::GetAtt: ["ECSCluster", "Arn"]
+
+
+# These are the values output by the CloudFormation template. Be careful
+# about changing any of them, because of them are exported with specific
+# names so that the other task related CF templates can use them.
+Outputs:
+  ClusterName:
+    Description: The name of the ECS cluster
+    Value: !Ref 'ECSCluster'
+    Export:
+      Name: !Join [ ':', [ !Ref 'AWS::StackName', 'ClusterName' ] ]

@@ -1,0 +1,24 @@
+site:
+  title: Crux
+  start_page: main::index.adoc
+  url: https://opencrux.com
+content:
+  sources:
+    - url: ../
+      start_path: docs/main
+      branches: HEAD
+    - url: ../
+      start_path: docs/about
+      branches: HEAD
+    - url: ../
+      start_path: docs/tutorials
+      branches: HEAD
+    - url: ../
+      start_path: docs/reference
+      branches:
+        - HEAD
+        - docs-20.09-1.11.0
+ui:
+  bundle:
+    url: ./crux-site/ui-bundle.zip
+    snapshot: true

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!deps.edn
+!build-uberjar.sh
+!crux.edn
+!crux-sql.edn

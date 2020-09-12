@@ -1,0 +1,163 @@
+%%
+%%   Copyright 2014 - 2018 Dmitry Kolesnikov, All Rights Reserved
+%%
+%%   Licensed under the Apache License, Version 2.0 (the "License");
+%%   you may not use this file except in compliance with the License.
+%%   You may obtain a copy of the License at
+%%
+%%       http://www.apache.org/licenses/LICENSE-2.0
+%%
+%%   Unless required by applicable law or agreed to in writing, software
+%%   distributed under the License is distributed on an "AS IS" BASIS,
+%%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%%   See the License for the specific language governing permissions and
+%%   limitations under the License.
+%%
+%% @doc
+%%   evaluates a logical program
+-module(datalog_vm).
+
+-compile({parse_transform, partial}).
+-compile({parse_transform, category}).
+-include_lib("datum/include/datum.hrl").
+-include("datalog.hrl").
+
+-export([
+   union/1,
+   recursion/2,
+   horn/2,
+   stream/3
+]).
+
+%%
+%% 
+union(Horns) ->
+   fun(Env) ->
+      HHorns = [F(Env) || F <- Horns],
+      fun(SubQ) ->
+         stream:unfold(fun funion/1, {?stream(), SubQ, HHorns})
+      end
+   end.
+
+funion({?stream(), _, []}) ->
+   ?stream();
+funion({?stream(), SubQ, [HHorn | THorn]}) ->
+   funion({HHorn(SubQ), SubQ, THorn});
+funion({Stream, SubQ, HHorns}) ->
+   {stream:head(Stream), {stream:tail(Stream), SubQ, HHorns}}.
+
+
+%%
+%%
+recursion(I, #horn{head = Head, body = Body}) ->
+   fun(Env) ->
+      IEnv  = I(Env),
+      {Horns, [#{'_' := XHead}]} = lists:partition(fun(#{'@' := F}) -> is_function(F) end, Body),
+      THorns =  [Spec#{'@' => F(Env)} || #{'@' := F} = Spec <- Horns],
+      fun(SubQ) ->
+         stream:unfold(fun frecc/1, {[IEnv(SubQ)], XHead, THorns, Head, sbf:new(128, 0.0001)})
+      end
+   end.
+
+frecc({[undefined], _, _, _, _}) ->
+   undefined;
+
+frecc({[undefined | Stack], XHead, THorn, Head, Sbf}) ->
+   frecc({Stack, XHead, THorn, Head, Sbf});
+
+frecc({[H | T], XHead, THorn, Head, Sbf}) ->
+   Tuple = stream:head(H),
+   case not sbf:has(Tuple, Sbf) of
+      true ->
+         spinoff(Tuple, {[stream:tail(H) | T], XHead, THorn, Head, sbf:add(Tuple, Sbf)});
+      false ->
+         frecc({[stream:tail(H) | T], XHead, THorn, Head, Sbf})
+   end.
+
+spinoff(Cell, {Stack, XHead, [HHorn | THorn] = Horns, Head, Sbf}) ->
+   Heap   = maps:from_list(lists:zip(XHead, Cell)),
+   Stream = join(eval(Heap, HHorn), THorn),
+   New = stream:map(
+      fun(X) ->
+         [maps:get(K, X) || K <- Head]
+      end,
+      Stream
+   ),
+   {Cell, {[New | Stack], XHead, Horns, Head, Sbf}}.
+
+%%
+%%
+horn(Head, Horn) ->
+   fun(Env) ->
+      [HHorn | THorn] = [Spec#{'@' => F(Env)} || #{'@' := F} = Spec <- Horn, is_function(F)],
+      fun(SubQ) ->
+         Heap   = maps:from_list(lists:zip(Head, SubQ)),
+         Stream = join(eval(Heap, HHorn), THorn),
+         stream:map(
+            fun(X) ->
+               [maps:get(K, X) || K <- Head]
+            end,
+            Stream
+         )
+      end
+   end.
+
+
+join(Stream, [#{'.' := pipe, '@' := Pipe} | THorn]) ->
+   join(Pipe(Stream), THorn);
+
+join(Stream, [HHorn | THorn]) ->
+   join(
+      stream:flat(
+         stream:map(fun(Heap) -> eval(Heap, HHorn) end, Stream)
+      ),
+      THorn
+   );
+
+join(Stream, []) ->
+   Stream.
+
+eval(Heap, #{'_' := Head, '@' := Fun} = Spec) ->
+   SubQ = [term(T, Spec, Heap) || T <- Head],
+   stream:map(
+      fun(Tuple) ->
+         %% Note: we need to give a priority to existed heap values, unless '_'
+         %% maps:merge(Heap, maps:from_list( lists:zip(Head, Tuple) ))
+         Prev = maps:filter(fun(_, X) -> X /= '_' end, Heap),
+         This = maps:from_list( lists:zip(Head, Tuple) ),
+         maps:merge(Heap, maps:merge(This, Prev))
+      end,
+      Fun(SubQ)
+   ).
+
+%%
+%%
+term(T, Spec, Heap)
+ when is_atom(T) ->
+   case Spec of
+      #{T := [{Op, Var}]} when is_atom(Var) ->
+         [{Op, maps:get(Var, Heap)}];
+      _ ->
+         case term(T, Spec) of
+            '_' -> term(T, Heap);
+            Val -> Val
+         end
+   end;
+term(T, _, _) ->
+   T.
+
+term(T, Predicate) ->
+   case Predicate of
+      #{T := Value} -> Value;
+      _             -> '_'
+   end;
+term(T, _) ->
+   T.
+
+%%
+%%
+stream(Gen, Id, Head) ->
+   fun(Env) ->
+      fun(SubQ) -> (Gen(Id, Head, SubQ))(Env) end
+   end.
+
