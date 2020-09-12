@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/boot-lein-generate undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/boot-lein-generate",
+    "repo": "https://github.com/SparkFund/boot-lein-generate",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/boot-lein-generate",
+    "startTime": "2020-09-01T19:19:25.310Z",
+    "endTime": "2020-09-01T19:19:25.838Z",
+    "childProcessPid": 61387,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--boot-lein-generate--61387"
+}

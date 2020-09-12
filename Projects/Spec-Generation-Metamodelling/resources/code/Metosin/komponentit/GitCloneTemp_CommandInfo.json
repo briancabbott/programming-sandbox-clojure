@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/komponentit undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/komponentit",
+    "repo": "https://github.com/metosin/komponentit",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/komponentit",
+    "startTime": "2020-09-01T15:46:38.770Z",
+    "endTime": "2020-09-01T15:46:49.065Z",
+    "childProcessPid": 41157,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--komponentit--41157"
+}

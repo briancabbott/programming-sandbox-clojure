@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/reitit undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/reitit",
+    "repo": "https://github.com/metosin/reitit",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/reitit",
+    "startTime": "2020-09-01T15:49:43.751Z",
+    "endTime": "2020-09-01T15:50:00.808Z",
+    "childProcessPid": 41468,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--reitit--41468"
+}

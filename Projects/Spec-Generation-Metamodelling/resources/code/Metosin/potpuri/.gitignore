@@ -1,0 +1,6 @@
+.nrepl*
+target
+.lein*
+doc
+gh-pages
+pom.xml*

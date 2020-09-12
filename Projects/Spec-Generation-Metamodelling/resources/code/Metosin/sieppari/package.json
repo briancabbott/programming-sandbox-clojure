@@ -1,0 +1,16 @@
+{
+  "name": "sieppari",
+  "description": "Small, fast, and complete interceptor library.",
+  "devDependencies": {
+    "ws": "^7.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metosin/sieppari.git"
+  },
+  "license": "EPL-2.0",
+  "bugs": {
+    "url": "https://github.com/metosin/sieppari/issues"
+  },
+  "homepage": "https://github.com/metosin/sieppari#readme"
+}

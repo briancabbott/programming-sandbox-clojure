@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/docker-circle-convox undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-convox",
+    "repo": "https://github.com/metosin/docker-circle-convox",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-convox",
+    "startTime": "2020-09-01T15:46:28.055Z",
+    "endTime": "2020-09-01T15:46:29.086Z",
+    "childProcessPid": 41082,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--docker-circle-convox--41082"
+}

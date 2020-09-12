@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/schema-viz undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/schema-viz",
+    "repo": "https://github.com/metosin/schema-viz",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/schema-viz",
+    "startTime": "2020-09-01T15:50:08.758Z",
+    "endTime": "2020-09-01T15:50:09.608Z",
+    "childProcessPid": 41559,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--schema-viz--41559"
+}

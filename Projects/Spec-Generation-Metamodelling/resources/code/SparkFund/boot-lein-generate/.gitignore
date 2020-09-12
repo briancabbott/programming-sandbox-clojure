@@ -1,0 +1,9 @@
+*.jar
+.nrepl-*
+.DS_Store
+/.idea/
+/*.iml
+/out/
+/.idea/replstate.xml
+/target/
+/project.clj

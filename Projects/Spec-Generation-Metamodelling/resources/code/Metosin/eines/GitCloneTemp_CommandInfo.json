@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/eines undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/eines",
+    "repo": "https://github.com/metosin/eines",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/eines",
+    "startTime": "2020-09-01T15:46:29.925Z",
+    "endTime": "2020-09-01T15:46:30.937Z",
+    "childProcessPid": 41094,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--eines--41094"
+}

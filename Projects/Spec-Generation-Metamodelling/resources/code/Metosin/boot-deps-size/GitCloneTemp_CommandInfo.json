@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/boot-deps-size undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-deps-size",
+    "repo": "https://github.com/metosin/boot-deps-size",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-deps-size",
+    "startTime": "2020-09-01T15:45:30.311Z",
+    "endTime": "2020-09-01T15:45:31.977Z",
+    "childProcessPid": 40890,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--boot-deps-size--40890"
+}

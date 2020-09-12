@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/fnhouse-swagger undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/fnhouse-swagger",
+    "repo": "https://github.com/metosin/fnhouse-swagger",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/fnhouse-swagger",
+    "startTime": "2020-09-01T15:46:30.938Z",
+    "endTime": "2020-09-01T15:46:31.868Z",
+    "childProcessPid": 41099,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--fnhouse-swagger--41099"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/cljs-react-material-ui undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/cljs-react-material-ui",
+    "repo": "https://github.com/metosin/cljs-react-material-ui",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/cljs-react-material-ui",
+    "startTime": "2020-09-01T15:45:46.884Z",
+    "endTime": "2020-09-01T15:45:47.554Z",
+    "childProcessPid": 40962,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--cljs-react-material-ui--40962"
+}

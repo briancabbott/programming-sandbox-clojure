@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/clojurebridge-intro undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clojurebridge-intro",
+    "repo": "https://github.com/metosin/clojurebridge-intro",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clojurebridge-intro",
+    "startTime": "2020-09-01T15:45:58.906Z",
+    "endTime": "2020-09-01T15:46:01.260Z",
+    "childProcessPid": 41009,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--clojurebridge-intro--41009"
+}

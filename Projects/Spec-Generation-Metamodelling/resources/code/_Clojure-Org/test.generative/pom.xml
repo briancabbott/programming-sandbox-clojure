@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>test.generative</artifactId>
+  <version>0.5.3-SNAPSHOT</version>
+  <name>test.generative</name>
+
+  <parent>
+    <groupId>org.clojure</groupId>
+    <artifactId>pom.contrib</artifactId>
+    <version>0.2.2</version>
+  </parent>
+
+  <developers>
+    <developer>
+      <name>Stuart Halloway</name>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:clojure/test.generative.git</connection>
+    <developerConnection>scm:git:git@github.com:clojure/test.generative.git</developerConnection>
+    <url>git@github.com:clojure/test.generative.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <repositories>
+    <!-- if our parent pom were a release (and in central), then this would be unnecessary -->
+    <repository>
+      <id>sonatype-oss-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+    <repository>
+      <id>clojure-snapshots</id>
+      <url>http://build.clojure.org/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>clojure-releases</id>
+      <url>http://build.clojure.org/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!-- <dependency> -->
+    <!--   <groupId>org.clojure</groupId> -->
+    <!--   <artifactId>clojure</artifactId> -->
+    <!--   <version>1.5.0-beta12</version> -->
+    <!-- </dependency> -->
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.namespace</artifactId>
+      <version>0.2.10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>data.generators</artifactId>
+      <version>0.1.2</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-invoker-plugin</artifactId>
+        <version>1.5</version>
+        <configuration>
+          <pomIncludes>
+            <pomInclude>*/pom.xml</pomInclude>
+          </pomIncludes>
+          <streamLogs>true</streamLogs>
+          <goals><goal>clojure:test</goal></goals>
+          <mavenOpts>-Duser.dir=${basedir}</mavenOpts>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>install</goal>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.theoryinpractise</groupId>
+        <artifactId>clojure-maven-plugin</artifactId>
+        <version>1.7.1</version>
+        <configuration>
+          <vmargs>-Dclojure.test.generative.runner=clojure.test</vmargs>
+          <testScript>bin/test.clj</testScript>
+          <testSourceDirectories>
+            <testSourceDirectory>src/examples/clojure</testSourceDirectory>
+          </testSourceDirectories>
+	  <copiedNamespaces>
+            <namespace>!.*</namespace>
+	  </copiedNamespaces>
+          <warnOnReflection>true</warnOnReflection>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

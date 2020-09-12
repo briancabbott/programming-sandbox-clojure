@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/tom undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tom",
+    "repo": "https://github.com/metosin/tom",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tom",
+    "startTime": "2020-09-01T15:50:19.466Z",
+    "endTime": "2020-09-01T15:50:20.339Z",
+    "childProcessPid": 41618,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--tom--41618"
+}

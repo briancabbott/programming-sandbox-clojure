@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/dommy undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/dommy",
+    "repo": "https://github.com/plumatic/dommy",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/dommy",
+    "startTime": "2020-09-01T16:15:34.226Z",
+    "endTime": "2020-09-01T16:15:34.838Z",
+    "childProcessPid": 42052,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--dommy--42052"
+}

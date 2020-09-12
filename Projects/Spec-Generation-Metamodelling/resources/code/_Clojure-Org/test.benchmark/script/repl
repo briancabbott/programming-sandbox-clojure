@@ -1,0 +1,2 @@
+#!/bin/sh
+$(dirname $0)/java_run clojure.main -r

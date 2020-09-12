@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/tilakone undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tilakone",
+    "repo": "https://github.com/metosin/tilakone",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/tilakone",
+    "startTime": "2020-09-01T15:50:18.780Z",
+    "endTime": "2020-09-01T15:50:19.465Z",
+    "childProcessPid": 41613,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--tilakone--41613"
+}

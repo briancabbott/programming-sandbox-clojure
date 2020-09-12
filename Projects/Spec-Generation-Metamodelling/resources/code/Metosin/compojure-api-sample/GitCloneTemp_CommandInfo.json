@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/compojure-api-sample undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/compojure-api-sample",
+    "repo": "https://github.com/metosin/compojure-api-sample",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/compojure-api-sample",
+    "startTime": "2020-09-01T15:46:24.855Z",
+    "endTime": "2020-09-01T15:46:25.633Z",
+    "childProcessPid": 41057,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--compojure-api-sample--41057"
+}

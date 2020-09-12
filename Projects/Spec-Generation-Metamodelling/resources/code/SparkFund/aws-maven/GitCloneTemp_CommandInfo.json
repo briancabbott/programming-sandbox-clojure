@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/aws-maven undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/aws-maven",
+    "repo": "https://github.com/SparkFund/aws-maven",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/aws-maven",
+    "startTime": "2020-09-01T19:19:24.084Z",
+    "endTime": "2020-09-01T19:19:24.667Z",
+    "childProcessPid": 61363,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--aws-maven--61363"
+}

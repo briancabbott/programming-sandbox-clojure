@@ -1,0 +1,67 @@
+= Hosted on the JVM
+Rich Hickey
+2015-01-01
+:type: about
+:toc: macro
+:icons: font
+:navlinktext: JVM Hosted
+:prevpagehref: concurrent_programming
+:prevpagetitle: Concurrent Programming
+:nextpagehref: clojurescript
+:nextpagetitle: ClojureScript
+
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
+
+Tapping into a Java class is as easy as:
+[source,clojure]
+----
+(import '[java.time LocalDate])
+
+(defn add-week ^LocalDate [^LocalDate date] 
+  (.plusDays date 7))
+
+(defn day->str [^LocalDate date] 
+  (format "%s %s, %s" (.getMonth date) (.getDayOfMonth date) (.getYear date)))
+
+;; infinite sequence of weekly dates, starting from today
+(def future-weeks (iterate add-week (LocalDate/now)))
+
+(map day->str (take 4 future-weeks))
+;; ("JULY 24, 2017" "JULY 31, 2017" "AUGUST 7, 2017" "AUGUST 14, 2017")
+----
+
+Here's a small Swing app as a more involved example:
+[source,clojure]
+----
+(import '(javax.swing JFrame JLabel JTextField JButton)
+        '(java.awt.event ActionListener)
+        '(java.awt GridLayout))
+(defn celsius []
+  (let [frame (JFrame. "Celsius Converter")
+        temp-text (JTextField.)
+        celsius-label (JLabel. "Celsius")
+        convert-button (JButton. "Convert")
+        fahrenheit-label (JLabel. "Fahrenheit")]
+    (.addActionListener
+     convert-button
+     (reify ActionListener
+            (actionPerformed
+             [_ evt]
+             (let [c (Double/parseDouble (.getText temp-text))]
+               (.setText fahrenheit-label
+                         (str (+ 32 (* 1.8 c)) " Fahrenheit"))))))
+    (doto frame
+      (.setLayout (GridLayout. 2 2 3 3))
+      (.add temp-text)
+      (.add celsius-label)
+      (.add convert-button)
+      (.add fahrenheit-label)
+      (.setSize 300 80)
+      (.setVisible true))))
+(celsius)
+----
+
+image:/images/content/about/celsius.png["celsius",height="80"]

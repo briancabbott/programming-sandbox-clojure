@@ -1,0 +1,13 @@
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+!/.lein-classpath
+/.nrepl-*
+*.DS_Store
+project.clj
+*.iml

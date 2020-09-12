@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/scjsv undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/scjsv",
+    "repo": "https://github.com/metosin/scjsv",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/scjsv",
+    "startTime": "2020-09-01T15:50:09.608Z",
+    "endTime": "2020-09-01T15:50:10.233Z",
+    "childProcessPid": 41565,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--scjsv--41565"
+}

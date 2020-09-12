@@ -1,0 +1,107 @@
+@import "font-awesome/less/font-awesome.less";
+@fa-font-path: "../fonts";
+
+@text-color: #1e1e1e;
+@border-color: #ccc;
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+html, body {
+  font-family: "Roboto";
+  font-size: 18px;
+  color: @text-color;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  width: 600px;
+  margin: 0 auto;
+}
+
+input[type=text] {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+
+  font-family: "Roboto";
+  font-size: 18px;
+}
+
+button {
+  border: 1px solid #888;
+  padding: 8px 12px;
+
+  font-family: "Roboto";
+  font-size: 18px;
+}
+
+form {
+  display: flex;
+
+  input {
+    flex: 1;
+  }
+}
+
+.links {
+  .likes {
+    font-size: 3em;
+    margin-right: 10px;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      flex: 1;
+      padding: 5px 10px;
+      background: none;
+      border: none;
+
+      &:hover {
+        background: #ccc;
+      }
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  a {
+    color: #444;
+    text-decoration: none;
+    flex: 1;
+
+    &:hover {
+      .title {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-right: 10px;
+  }
+
+  .href {
+    color: #888;
+  }
+
+  .favicon-placeholder {
+    width: 32px;
+    height: 32px;
+  }
+}

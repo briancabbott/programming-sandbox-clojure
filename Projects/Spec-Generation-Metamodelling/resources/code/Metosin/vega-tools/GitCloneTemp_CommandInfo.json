@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/vega-tools undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/vega-tools",
+    "repo": "https://github.com/metosin/vega-tools",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/vega-tools",
+    "startTime": "2020-09-01T15:50:22.572Z",
+    "endTime": "2020-09-01T15:50:23.181Z",
+    "childProcessPid": 41642,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--vega-tools--41642"
+}

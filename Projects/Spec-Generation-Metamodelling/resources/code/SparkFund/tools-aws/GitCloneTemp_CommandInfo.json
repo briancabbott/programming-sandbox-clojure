@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/tools-aws undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/tools-aws",
+    "repo": "https://github.com/SparkFund/tools-aws",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/tools-aws",
+    "startTime": "2020-09-01T19:19:37.333Z",
+    "endTime": "2020-09-01T19:19:37.945Z",
+    "childProcessPid": 61634,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--tools-aws--61634"
+}

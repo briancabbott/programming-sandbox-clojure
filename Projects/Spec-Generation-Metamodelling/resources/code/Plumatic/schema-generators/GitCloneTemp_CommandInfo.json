@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/schema-generators undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/schema-generators",
+    "repo": "https://github.com/plumatic/schema-generators",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/schema-generators",
+    "startTime": "2020-09-01T16:15:53.601Z",
+    "endTime": "2020-09-01T16:15:54.346Z",
+    "childProcessPid": 42147,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--schema-generators--42147"
+}

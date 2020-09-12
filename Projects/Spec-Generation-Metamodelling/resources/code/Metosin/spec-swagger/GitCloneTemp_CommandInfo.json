@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/spec-swagger undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/spec-swagger",
+    "repo": "https://github.com/metosin/spec-swagger",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/spec-swagger",
+    "startTime": "2020-09-01T15:50:14.190Z",
+    "endTime": "2020-09-01T15:50:14.761Z",
+    "childProcessPid": 41586,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--spec-swagger--41586"
+}

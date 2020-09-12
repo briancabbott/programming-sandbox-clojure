@@ -1,0 +1,7 @@
+checkouts/
+logs/
+target/
+tmp/
+pom.xml
+.lein-repl-history
+.nrepl-port

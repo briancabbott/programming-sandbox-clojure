@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/jimfs undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/jimfs",
+    "repo": "https://github.com/SparkFund/jimfs",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/jimfs",
+    "startTime": "2020-09-01T19:19:27.777Z",
+    "endTime": "2020-09-01T19:19:29.909Z",
+    "childProcessPid": 61445,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--jimfs--61445"
+}

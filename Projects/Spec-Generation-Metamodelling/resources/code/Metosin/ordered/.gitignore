@@ -1,0 +1,6 @@
+pom.xml
+*.jar
+*.war
+target
+.lein*
+docs

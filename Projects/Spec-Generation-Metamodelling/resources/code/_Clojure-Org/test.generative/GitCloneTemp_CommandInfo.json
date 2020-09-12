@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/clojure-land/test.generative undefined\\cloj--06-06-2020--4LJX9cci2vZMEDPcYiV9uW/test.generative",
+    "repo": "https://github.com/clojure-land/test.generative",
+    "targetPath": "undefined\\cloj--06-06-2020--4LJX9cci2vZMEDPcYiV9uW/test.generative",
+    "startTime": "2020-06-06T21:28:06.498Z",
+    "endTime": "2020-06-06T21:28:07.152Z",
+    "childProcessPid": 20388,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/GitHub-Repository-Downloader/TypeScript\\workingdir/--clojure-land--test.generative--20388"
+}

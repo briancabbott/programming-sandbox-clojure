@@ -1,0 +1,144 @@
+--------------------
+*CURRENT BEST JAVA*
+
+javac src/baseline/java/alioth/java/knucleotide.java
+time java -server -cp src/baseline/java -XX:+TieredCompilation -XX:+AggressiveOpts alioth.java.knucleotide 0 < fastaout25m
+
+A 30.295
+T 30.151
+C 19.800
+G 19.754
+
+AA 9.177
+TA 9.132
+AT 9.131
+TT 9.091
+CA 6.002
+AC 6.001
+AG 5.987
+GA 5.984
+CT 5.971
+TC 5.971
+GT 5.957
+TG 5.956
+CC 3.917
+GC 3.911
+CG 3.909
+GG 3.902
+
+1471758	GGT
+446535	GGTA
+47336	GGTATT
+893	GGTATTTTAATT
+893	GGTATTTTAATTTATAGT
+
+real	0m6.962s
+user	0m44.659s
+sys	0m0.331s
+
+--------------------
+*CURRENT BEST CLOJURE*
+(on site)
+
+[~/code/test.benchmark (master)]$ time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar -XX:+TieredCompilation -XX:+AggressiveOpts alioth.knucleotide 0 < fastaout25m
+
+time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.6.0/clojure-1.6.0.jar -server -XX:+TieredCompilation -XX:+AggressiveOpts -Xmx1024m alioth.knucleotide 0 < fastaout25m
+
+real	0m15.496s
+user	1m22.148s
+sys	0m0.994s
+
+--------------------
+.1 - working port of Java code
+real	0m29.953s
+
+--------------------
+.2 - .1 + make ByteString fields primitive
+
+2.5m
+real	0m3.474s
+
+25m
+real	0m24.935s
+
+--------------------
+.3 - .2 + tweak hash calculation to avoid boxing
+
+2.5m
+real	0m3.406s
+
+25m
+real	0m25.425s
+
+--------------------
+*SCALA VERSION*
+(Using Java 8 now)
+
+Compile:
+/Users/alex/code/tools/scala-2.10.3/bin/scalac -optimise -target:jvm-1.7 src/baseline/scala/knucleotide.scala
+
+Run:
+time env JAVA_OPTS=-Xmx3G java -server -XX:+TieredCompilation -XX:+AggressiveOpts -Xbootclasspath/a:/Users/alex/code/tools/scala-2.10.3/lib/scala-library.jar:/Users/alex/code/tools/scala-2.10.3/lib/akka-actors.jar:/Users/alex/code/tools/scala-2.10.3/lib/typesafe-config.jar knucleotide 0 < fastaout25m
+
+real	0m4.421s
+
+
+--------------------
+.4 - brand new version ported from Scala version
+
+2.5m
+real	0m2.756s
+
+25m
+real	0m11.343s
+
+--------------------
+.5 - remove multimethod during reading 
+
+25m
+real	0m13.671s
+
+--------------------
+.6 - .5 + lots more tuning
+
+real	0m11.923s
+user	0m43.390s
+sys	0m2.523s
+
+Breakdown from readb:
+51 ms  ->Bits
+50 ms  read
+61 ms  compare for newline
+200 ms (.get data i)
+513 ms .add2
+
+--------------------
+.7 - .6 + much speculative work on simpifying read process
+
+--------------------
+.8 - .6 + remove more boxed math and some cruft
+real	0m11.716s
+
+--------------------
+.9 - .8 + forkjoin instead of executor
+real	0m12.048s
+
+--------------------
+.10 - .8 + changed rehash constants, many bytecode tweaks
+real	0m9.328s
+
+--------------------
+.11 - .10 + changed lookup table calculation, cosmetic stuff
+real	0m9.249s
+
+--------------------
+.12 - .11 + reorg'ed code, and improved lookup table generation
+real	0m9.301s
+
+--------------------
+.13 - .12 + replaced allocation and walking of big arrays with mere traversal
+real	0m5.714s
+
+
+
+

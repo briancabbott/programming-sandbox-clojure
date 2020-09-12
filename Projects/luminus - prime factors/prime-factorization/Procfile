@@ -1,1 +1,0 @@
-web: java -cp target/uberjar/prime-factorization.jar clojure.main -m prime-factorization.core

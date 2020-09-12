@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/plumatic.github.com undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/plumatic.github.com",
+    "repo": "https://github.com/plumatic/plumatic.github.com",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/plumatic.github.com",
+    "startTime": "2020-09-01T16:15:38.664Z",
+    "endTime": "2020-09-01T16:15:49.448Z",
+    "childProcessPid": 42115,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--plumatic.github.com--42115"
+}

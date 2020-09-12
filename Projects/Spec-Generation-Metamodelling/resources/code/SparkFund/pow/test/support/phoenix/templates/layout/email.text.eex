@@ -1,0 +1,3 @@
+# Pow e-mail
+
+<%= @inner_content %>

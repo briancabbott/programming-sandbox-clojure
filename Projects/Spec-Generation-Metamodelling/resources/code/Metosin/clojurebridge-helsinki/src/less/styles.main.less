@@ -1,0 +1,84 @@
+@import "normalize.css";
+@import "prefixer.less";
+
+@background-color: #fefefe;
+@foreground-color: #202020;
+
+@screen-phone:                  480px;
+@screen-tablet:                 768px;
+@screen-desktop:                992px;
+
+@sizefont: 1em;
+
+html {
+  box-sizing:              border-box;
+  -webkit-font-smoothing:  antialiased;
+}
+
+body {
+  font-family:  "Lato", sans-serif;
+  background:   @background-color;
+  color:        @foreground-color;
+  margin:       0;
+}
+
+/*Layout, flexbox*/
+
+.loading-page {
+  .flex-block();
+  .flex-flow(column);
+  .align-items(center);
+  .justify-content(center);
+  width: 100%;
+  .logo{
+    width: 120px;
+    margin:  4rem auto;
+    margin-bottom: 12rem;
+  }
+}
+
+img.sponsor {
+    display:block;
+    margin: 20px auto;
+}
+
+.scene {
+  background: url('../img/cljbridge-zorcam.jpg');
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -120px;
+  min-width: 1200px;
+}
+
+.wrapper {
+  width: 80%;
+}
+
+p, ul {
+ width: 80%;
+ margin: 1rem auto;
+}
+
+.sponsor-logos {
+  justify-content: space-around;
+  display: flex;
+  padding: 20px 70px;
+  flex-wrap: wrap;
+}
+
+/*Fonts, colors and sizes*/
+a {
+    color: currentColor;
+}
+h1, h2, h3, .script {
+  text-align: center;
+}
+h2 {
+  font-size: 1.3em;
+}
+
+.script {
+  font-family: "Cookie", cursive;
+  text-align: center;
+}

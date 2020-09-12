@@ -1,0 +1,1 @@
+web: java -cp target/uberjar/adder.jar clojure.main -m adder.core

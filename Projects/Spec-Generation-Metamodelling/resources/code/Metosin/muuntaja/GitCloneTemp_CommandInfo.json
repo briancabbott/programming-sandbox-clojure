@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/muuntaja undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/muuntaja",
+    "repo": "https://github.com/metosin/muuntaja",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/muuntaja",
+    "startTime": "2020-09-01T15:47:13.353Z",
+    "endTime": "2020-09-01T15:47:14.641Z",
+    "childProcessPid": 41323,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--muuntaja--41323"
+}

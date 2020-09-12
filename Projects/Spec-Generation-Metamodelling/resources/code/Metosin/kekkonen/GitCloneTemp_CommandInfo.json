@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/kekkonen undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/kekkonen",
+    "repo": "https://github.com/metosin/kekkonen",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/kekkonen",
+    "startTime": "2020-09-01T15:46:35.208Z",
+    "endTime": "2020-09-01T15:46:36.323Z",
+    "childProcessPid": 41137,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--kekkonen--41137"
+}

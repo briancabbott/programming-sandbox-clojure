@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/spec-tacular undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/spec-tacular",
+    "repo": "https://github.com/SparkFund/spec-tacular",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/spec-tacular",
+    "startTime": "2020-09-01T19:19:36.501Z",
+    "endTime": "2020-09-01T19:19:37.332Z",
+    "childProcessPid": 61617,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--spec-tacular--61617"
+}

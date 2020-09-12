@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/sieppari undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/sieppari",
+    "repo": "https://github.com/metosin/sieppari",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/sieppari",
+    "startTime": "2020-09-01T15:50:10.233Z",
+    "endTime": "2020-09-01T15:50:10.965Z",
+    "childProcessPid": 41570,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--sieppari--41570"
+}

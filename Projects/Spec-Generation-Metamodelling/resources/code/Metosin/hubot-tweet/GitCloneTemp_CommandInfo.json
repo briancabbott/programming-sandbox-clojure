@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/hubot-tweet undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/hubot-tweet",
+    "repo": "https://github.com/metosin/hubot-tweet",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/hubot-tweet",
+    "startTime": "2020-09-01T15:46:31.879Z",
+    "endTime": "2020-09-01T15:46:32.549Z",
+    "childProcessPid": 41113,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--hubot-tweet--41113"
+}

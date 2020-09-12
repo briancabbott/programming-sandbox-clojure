@@ -1,0 +1,1 @@
+(ns metosin.loc-test)

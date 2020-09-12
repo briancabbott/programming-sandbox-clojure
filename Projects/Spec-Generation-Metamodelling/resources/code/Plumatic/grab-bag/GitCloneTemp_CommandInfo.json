@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/grab-bag undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/grab-bag",
+    "repo": "https://github.com/plumatic/grab-bag",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/grab-bag",
+    "startTime": "2020-09-01T16:15:36.405Z",
+    "endTime": "2020-09-01T16:15:37.402Z",
+    "childProcessPid": 42078,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--grab-bag--42078"
+}

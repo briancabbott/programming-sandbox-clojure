@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/clojure-bootcamp undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clojure-bootcamp",
+    "repo": "https://github.com/metosin/clojure-bootcamp",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clojure-bootcamp",
+    "startTime": "2020-09-01T15:45:47.555Z",
+    "endTime": "2020-09-01T15:45:49.387Z",
+    "childProcessPid": 40968,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--clojure-bootcamp--40968"
+}

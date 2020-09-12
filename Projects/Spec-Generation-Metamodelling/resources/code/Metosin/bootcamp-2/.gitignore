@@ -1,0 +1,16 @@
+/target/
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+~$*
+.settings
+.classpath
+.project
+.idea
+bootcamp.iml
+resources/public/js
+src/clj/secret.clj
+.repl

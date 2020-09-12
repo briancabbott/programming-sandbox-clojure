@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/om-tools undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/om-tools",
+    "repo": "https://github.com/plumatic/om-tools",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/om-tools",
+    "startTime": "2020-09-01T16:15:37.992Z",
+    "endTime": "2020-09-01T16:15:38.664Z",
+    "childProcessPid": 42100,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--om-tools--42100"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/talvi undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/talvi",
+    "repo": "https://github.com/metosin/talvi",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/talvi",
+    "startTime": "2020-09-01T15:50:16.061Z",
+    "endTime": "2020-09-01T15:50:17.591Z",
+    "childProcessPid": 41598,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--talvi--41598"
+}

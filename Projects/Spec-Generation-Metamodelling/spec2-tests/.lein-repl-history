@@ -1,0 +1,58 @@
+(macroexpand (defmacro keys*
+  "takes the same arguments as spec/keys and returns a regex op that matches sequences of key/values,
+  converts them into a map, and conforms that map with a corresponding
+  spec/keys call:
+  user=> (s/conform (s/keys :req-un [::a ::c]) {:a 1 :c 2})
+  {:a 1, :c 2}
+  user=> (s/conform (s/keys* :req-un [::a ::c]) [:a 1 :c 2])
+  {:a 1, :c 2}
+  the resulting regex op can be composed into a larger regex:
+  user=> (s/conform (s/cat :i1 integer? :m (s/keys* :req-un [::a ::c]) :i2 integer?) [42 :a 1 :c 2 :d 4 99])
+  {:i1 42, :m {:a 1, :c 2, :d 4}, :i2 99}"
+  [& kspecs]
+  `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs)))))
+(require '[clojure.spec-alpha2])
+(require '[clojure.spec-alpha2 :as s])
+(require 'clojure.spec-alpha2.gen :as gen]
+            [clojure.spec-alpha2.test :as test]))
+(require 'clojure.spec-alpha2.gen :as gen])
+(require '[clojure.spec-alpha2.gen :as gen])
+(require '[clojure.spec-alpha2.test :as test])
+(macroexpand (defmacro keys*
+  "takes the same arguments as spec/keys and returns a regex op that matches sequences of key/values,
+  converts them into a map, and conforms that map with a corresponding
+  spec/keys call:
+  user=> (s/conform (s/keys :req-un [::a ::c]) {:a 1 :c 2})
+  {:a 1, :c 2}
+  user=> (s/conform (s/keys* :req-un [::a ::c]) [:a 1 :c 2])
+  {:a 1, :c 2}
+  the resulting regex op can be composed into a larger regex:
+  user=> (s/conform (s/cat :i1 integer? :m (s/keys* :req-un [::a ::c]) :i2 integer?) [42 :a 1 :c 2 :d 4 99])
+  {:i1 42, :m {:a 1, :c 2, :d 4}, :i2 99}"
+  [& kspecs]
+  `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs)))))
+(macroexpand [& kspecs]
+  `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(in-ns clojure.spec-alpha2)
+(ns clojure.spec-alpha2)
+(doc in-ns)
+(in-ns clojure.spec-alpha2)
+(in-ns clojure.spec-alpha2))
+(in-ns clojure.spec-alpha2)
+(in-ns 'clojure.spec-alpha2)
+(macroexpand `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(doc macroexpand)
+(clojure.core/doc macroexpand)
+(clojure.repl/doc  macroexpand)
+(clojure.repl/doc  macroexpand-1)
+(macroexpand (defmacro keys* [& kspecs] `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs)))))
+(macroexpand [& kspecs] `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs)))))
+(macroexpand [& kspecs] `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand [kspecs] `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand kspecs `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand-1 kspecs `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand-1 (declare kspecs) `(spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand-1 ` (declare kspecs) (spec* '~(explicate (ns-name *ns*) `(keys* ~@kspecs))))
+(macroexpand keys)
+(macroexpand-1 keys)

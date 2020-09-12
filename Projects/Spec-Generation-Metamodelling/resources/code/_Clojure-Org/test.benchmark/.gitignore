@@ -1,0 +1,14 @@
+classes
+target
+lib
+*.jar
+docs
+script/maven-classpath
+.lein*
+project.clj
+.project
+.settings
+.classpath
+*.#*
+*#*
+src/baseline/java

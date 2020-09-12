@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+# Modules
+for ext in \
+  reitit-core \
+  reitit-dev \
+  reitit-spec \
+  reitit-malli \
+  reitit-schema \
+  reitit-ring \
+  reitit-middleware \
+  reitit-http \
+  reitit-interceptors \
+  reitit-swagger \
+  reitit-swagger-ui \
+  reitit-frontend \
+  reitit-sieppari \
+  reitit-pedestal \
+  reitit; do
+  cd modules/$ext; lein "$@"; cd ../..;
+done

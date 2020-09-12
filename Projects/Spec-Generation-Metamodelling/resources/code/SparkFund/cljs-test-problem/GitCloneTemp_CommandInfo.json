@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/SparkFund/cljs-test-problem undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/cljs-test-problem",
+    "repo": "https://github.com/SparkFund/cljs-test-problem",
+    "targetPath": "undefined\\SF--09-01-2020--bMqL6qG7YWk25S7Ks2QCrf/cljs-test-problem",
+    "startTime": "2020-09-01T19:19:26.698Z",
+    "endTime": "2020-09-01T19:19:27.167Z",
+    "childProcessPid": 61421,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--SparkFund--cljs-test-problem--61421"
+}

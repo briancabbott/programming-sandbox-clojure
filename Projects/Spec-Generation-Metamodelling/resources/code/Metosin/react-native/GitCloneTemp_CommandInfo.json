@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/react-native undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/react-native",
+    "repo": "https://github.com/metosin/react-native",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/react-native",
+    "startTime": "2020-09-01T15:47:23.000Z",
+    "endTime": "2020-09-01T15:49:43.161Z",
+    "childProcessPid": 41409,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--react-native--41409"
+}

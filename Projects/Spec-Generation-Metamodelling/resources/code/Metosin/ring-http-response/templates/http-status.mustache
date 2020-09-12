@@ -1,0 +1,24 @@
+(ns ring.util.http-status)
+
+{{#template}}
+(def {{fn-name}} {{status}})
+{{/template}}
+
+(def status
+  "Maps status to name and description"
+  {
+{{#template}}
+   {{status}} {:name "{{name}}"
+        :description "{{description}}"}
+{{/template}}
+   })
+
+(defn get-name
+  "Returns http status name by code."
+  [code]
+  (get-in status [code :name]))
+
+(defn get-description
+  "Returns http status description by code."
+  [code]
+  (get-in status [code :description]))

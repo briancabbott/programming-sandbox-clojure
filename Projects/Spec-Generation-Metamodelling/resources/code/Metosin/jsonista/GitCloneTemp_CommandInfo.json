@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/jsonista undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/jsonista",
+    "repo": "https://github.com/metosin/jsonista",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/jsonista",
+    "startTime": "2020-09-01T15:46:34.145Z",
+    "endTime": "2020-09-01T15:46:35.207Z",
+    "childProcessPid": 41132,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--jsonista--41132"
+}

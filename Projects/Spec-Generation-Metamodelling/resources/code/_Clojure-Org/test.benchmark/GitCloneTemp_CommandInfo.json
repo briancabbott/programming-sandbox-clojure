@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/clojure-land/test.benchmark undefined\\cloj--06-06-2020--4LJX9cci2vZMEDPcYiV9uW/test.benchmark",
+    "repo": "https://github.com/clojure-land/test.benchmark",
+    "targetPath": "undefined\\cloj--06-06-2020--4LJX9cci2vZMEDPcYiV9uW/test.benchmark",
+    "startTime": "2020-06-06T21:28:04.140Z",
+    "endTime": "2020-06-06T21:28:04.769Z",
+    "childProcessPid": 20330,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/GitHub-Repository-Downloader/TypeScript\\workingdir/--clojure-land--test.benchmark--20330"
+}

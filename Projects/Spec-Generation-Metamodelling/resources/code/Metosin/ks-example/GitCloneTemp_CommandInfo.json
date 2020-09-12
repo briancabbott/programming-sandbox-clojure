@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/ks-example undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/ks-example",
+    "repo": "https://github.com/metosin/ks-example",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/ks-example",
+    "startTime": "2020-09-01T15:46:49.066Z",
+    "endTime": "2020-09-01T15:46:49.728Z",
+    "childProcessPid": 41186,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--ks-example--41186"
+}

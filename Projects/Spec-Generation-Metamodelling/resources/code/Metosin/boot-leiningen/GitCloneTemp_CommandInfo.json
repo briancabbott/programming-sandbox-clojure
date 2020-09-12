@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/boot-leiningen undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-leiningen",
+    "repo": "https://github.com/metosin/boot-leiningen",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-leiningen",
+    "startTime": "2020-09-01T15:45:31.977Z",
+    "endTime": "2020-09-01T15:45:32.474Z",
+    "childProcessPid": 40897,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--boot-leiningen--40897"
+}

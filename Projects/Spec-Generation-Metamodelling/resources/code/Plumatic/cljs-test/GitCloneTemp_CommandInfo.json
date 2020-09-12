@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/cljs-test undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/cljs-test",
+    "repo": "https://github.com/plumatic/cljs-test",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/cljs-test",
+    "startTime": "2020-09-01T16:15:33.665Z",
+    "endTime": "2020-09-01T16:15:34.225Z",
+    "childProcessPid": 42047,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--cljs-test--42047"
+}

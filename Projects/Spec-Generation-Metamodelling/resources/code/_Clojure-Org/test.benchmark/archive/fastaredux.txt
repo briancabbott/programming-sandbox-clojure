@@ -1,0 +1,210 @@
+HOW TO RUN CLOJURE VERSION:
+
+1) git clone git@github.com:clojure/test.benchmark.git
+2) mvn test
+3) time script/run alioth.fasta-redux 25000000 > /dev/null
+
+For #3 I usually run this equivalent command so I know exactly what I'm getting (note hardcoded Clojure path):
+
+time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar -XX:+TieredCompilation -XX:+AggressiveOpts alioth.fasta_redux 25000000 > /dev/null
+
+Different versions (described below) are in /archive/fasta_redux.*
+- fasta_redux.10 is the one currently at Alioth and checked into the repo
+- fasta_redux.13 adds int type hints in definterface+deftype
+
+Switch to 13 for example with:
+cp archive/fasta_redux.13 src/main/clojure/alioth/fasta_redux.clj
+mvn test
+
+Some useful decompiler commands for examining bytecode:
+
+javap -c -classpath target/classes alioth.fasta_redux.RandomSeed
+javap -c -classpath target/classes alioth.fasta_redux\$fasta_random
+
+
+============================================================
+fasta-redux
+
+--------------------
+*CURRENT BEST JAVA*
+javac src/baseline/java/alioth/java/fastaredux.java
+time java -server -cp src/baseline/java -XX:+TieredCompilation -XX:+AggressiveOpts alioth.java.fastaredux 25000000 > /dev/null
+
+real	0m1.195s
+user	0m1.200s
+sys	0m0.025s
+
+--------------------
+*CURRENT BEST CLOJURE*
+(on site)
+
+time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar -XX:+TieredCompilation -XX:+AggressiveOpts alioth.fasta_redux_site 25000000 > /dev/null
+
+real	0m4.767s
+user	0m5.625s
+sys	0m0.341s
+
+--------------------
+current version in repo
+
+time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar -XX:+TieredCompilation -XX:+AggressiveOpts alioth.fasta_redux 25000000 > /dev/null
+
+real	0m4.241s
+user	0m4.988s
+sys	0m0.329s
+
+--------------------
+.1 - comment out writes to hide time to log for now
+
+timed three main calls:
+ONE (repeat-fasta) = 6.798 msecs
+TWO (random-fasta) = 1319.122 msecs
+THREE (random-fasta) = 1824.821 msecs
+
+random-fasta consists of three nested loops with a large number of iterations
+ls -l target/classes/alioth/fasta_redux*
+javap -c -classpath target/classes alioth.fasta_redux\$random_fasta\$fn__411\$fn__412
+
+--------------------
+.2 - switch defrecord to a deftype 
+
+real	0m4.087s
+user	0m4.805s
+sys	0m0.319s
+
+just doing field access. could potentially make p field mutable and reuse 
+instances in sum-and-scale, but nothing I've seen indicates that's 
+likely to be the current bottleneck.
+
+--------------------
+.3 - .2 + use alength for array counting
+
+real	0m3.811s
+user	0m4.495s
+sys	0m0.310s
+
+--------------------
+.4 - .3 + add long hint on middle loop of random-fasta
+
+real	0m3.637s
+user	0m4.321s
+sys	0m0.293s
+
+--------------------
+.5 - switch back to site version
+remove all hints and unchecked stuff, replace int- with long-
+
+real	0m2.530s
+user	0m3.328s
+sys	0m0.106s
+
+--------------------
+.6 - .5 + combine fasta-repeat and cycle-bytes
+
+real	0m2.475s
+user	0m3.202s
+sys	0m0.106s
+
+--------------------
+.7 - .6 + changes to make-lookup-table and find-index
+
+real	0m2.470s
+user	0m3.239s
+sys	0m0.103s
+
+--------------------
+.8 - .7 + use double array for cumulative probabilities and find-index
+
+real	0m2.423s
+user	0m3.141s
+sys	0m0.096s
+
+--------------------
+.9 - .8 + removed some casts in fasta-random that aren't helping at all
+
+real	0m2.438s
+user	0m3.145s
+sys	0m0.094s
+
+--------------------
+.10 - .9 + replace gen-random-fast with definterface + deftype to get field 
+mutation instead of array mutation and return an int instead of an object.
+real	0m2.314s
+user	0m2.997s
+sys	0m0.092s
+
+--------------------
+.11 - .10 + use int math inside gen-random-fast
+
+tested using Java fasta_redux Random.next() as an alternative shows:
+real	0m1.945s
+user	0m2.592s
+sys	0m0.106s
+
+clearly the Java version of the seed calculation is faster and a
+significant component for the performance.
+
+pushed this as far as I know how in .11 to get int math and it is slower:
+
+real	0m2.813s
+user	0m3.524s
+sys	0m0.107s
+
+I think one important difference is that the Java version is using static ints
+which get inlined directly into the bytecode with sipush. In ours, I can't get 
+local ints - using field ints helps avoid casting but makes the code load several 
+fields in every rep.
+
+--------------------
+.12 - .10 + definterface with ^long hint and long cast
+
+real	0m2.599s
+user	0m3.347s
+sys	0m0.091s
+
+  public long nextSeed();
+    Code:
+       0: aload_0
+       1: getfield      #82                 // Field seed:J
+       4: ldc2_w        #44                 // long 3877l
+       7: lmul
+       8: ldc2_w        #54                 // long 29573l
+      11: ladd
+      12: ldc2_w        #58                 // long 139968l
+      15: lrem
+      16: lstore_1
+      17: aload_0
+      18: lload_1
+      19: putfield      #82                 // Field seed:J
+      22: lload_1
+      23: ldc2_w        #66                 // double 1.586076817558299d
+      26: invokestatic  #129                // Method clojure/lang/Numbers.unchecked_multiply:(JD)D
+      29: invokestatic  #133                // Method clojure/lang/RT.longCast:(D)J
+      32: lreturn
+	  
+--------------------
+.13 - .10 + definterface with ^int hint and int cast
+
+real	0m2.370s
+user	0m3.084s
+sys	0m0.104s
+
+  public int nextSeed();
+    Code:
+       0: aload_0
+       1: getfield      #82                 // Field seed:J
+       4: ldc2_w        #44                 // long 3877l
+       7: lmul
+       8: ldc2_w        #54                 // long 29573l
+      11: ladd
+      12: ldc2_w        #58                 // long 139968l
+      15: lrem
+      16: lstore_1
+      17: aload_0
+      18: lload_1
+      19: putfield      #82                 // Field seed:J
+      22: lload_1
+      23: ldc2_w        #66                 // double 1.586076817558299d
+      26: invokestatic  #131                // Method clojure/lang/Numbers.unchecked_multiply:(JD)D
+      29: d2i
+      30: ireturn

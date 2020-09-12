@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/reagent-dev-tools undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/reagent-dev-tools",
+    "repo": "https://github.com/metosin/reagent-dev-tools",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/reagent-dev-tools",
+    "startTime": "2020-09-01T15:49:43.162Z",
+    "endTime": "2020-09-01T15:49:43.750Z",
+    "childProcessPid": 41462,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--reagent-dev-tools--41462"
+}

@@ -1,0 +1,19 @@
+sudo: false
+language: clojure
+lein: 2.8.1
+install:
+  - ./scripts/lein-modules install
+  - lein deps
+script:
+  - lein with-profile $PROFILE do clean, midje, check
+# JDKs to use: 8 for legacy and 13 as the latest release
+jdk:
+  - openjdk8
+  - openjdk13
+# Clojure: 1.8 for legacy and 1.10 as the latest release
+env:
+  - PROFILE=dev
+  - PROFILE=dev,1.8
+cache:
+  directories:
+  - $HOME/.m2

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/jdbc-ring-session undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/jdbc-ring-session",
+    "repo": "https://github.com/metosin/jdbc-ring-session",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/jdbc-ring-session",
+    "startTime": "2020-09-01T15:46:33.428Z",
+    "endTime": "2020-09-01T15:46:34.144Z",
+    "childProcessPid": 41127,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--jdbc-ring-session--41127"
+}

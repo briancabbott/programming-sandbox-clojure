@@ -1,0 +1,4 @@
+{:db    {:server {:host  "127.0.0.1"
+                  :port  27017}
+         :db "bootbook"}
+ :http  {:port 8080}}

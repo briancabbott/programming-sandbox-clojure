@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/fnhouse undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/fnhouse",
+    "repo": "https://github.com/plumatic/fnhouse",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/fnhouse",
+    "startTime": "2020-09-01T16:15:35.854Z",
+    "endTime": "2020-09-01T16:15:36.405Z",
+    "childProcessPid": 42071,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--fnhouse--42071"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/linked undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/linked",
+    "repo": "https://github.com/metosin/linked",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/linked",
+    "startTime": "2020-09-01T15:46:58.489Z",
+    "endTime": "2020-09-01T15:46:59.139Z",
+    "childProcessPid": 41235,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--linked--41235"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/codemirror-parinfer undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/codemirror-parinfer",
+    "repo": "https://github.com/metosin/codemirror-parinfer",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/codemirror-parinfer",
+    "startTime": "2020-09-01T15:46:20.460Z",
+    "endTime": "2020-09-01T15:46:21.748Z",
+    "childProcessPid": 41042,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--codemirror-parinfer--41042"
+}

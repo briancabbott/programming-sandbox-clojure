@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/sormilla undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/sormilla",
+    "repo": "https://github.com/metosin/sormilla",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/sormilla",
+    "startTime": "2020-09-01T15:50:10.966Z",
+    "endTime": "2020-09-01T15:50:14.189Z",
+    "childProcessPid": 41578,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--sormilla--41578"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/clj-ai-meetup undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clj-ai-meetup",
+    "repo": "https://github.com/metosin/clj-ai-meetup",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/clj-ai-meetup",
+    "startTime": "2020-09-01T15:45:37.446Z",
+    "endTime": "2020-09-01T15:45:37.978Z",
+    "childProcessPid": 40942,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--clj-ai-meetup--40942"
+}

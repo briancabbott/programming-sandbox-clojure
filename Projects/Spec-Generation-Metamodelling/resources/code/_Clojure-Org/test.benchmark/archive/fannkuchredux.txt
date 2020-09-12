@@ -1,0 +1,124 @@
+--------------------
+*CURRENT BEST JAVA*
+
+javac src/baseline/java/alioth/java/fannkuchredux.java
+time java -server -cp src/baseline/java -XX:+TieredCompilation -XX:+AggressiveOpts alioth.java.fannkuchredux
+3968050
+Pfannkuchen(12) = 65
+
+real	0m6.688s
+user	0m51.748s
+sys	0m0.052s
+
+
+--------------------
+*CURRENT BEST CLOJURE*
+(on site)
+
+[~/code/test.benchmark (master)]$ time java -server -cp target/classes:/Users/alex/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar -XX:+TieredCompilation -XX:+AggressiveOpts alioth.fannkuchredux
+3968050
+Pfannkuchen(12) = 65
+
+real	0m16.474s
+user	2m3.180s
+sys	0m0.707s
+
+--------------------
+.1 - remove int hints, change int-arrays to long-arrays, unchecked-math
+
+real	0m13.564s
+user	1m39.030s
+sys	0m1.118s
+
+--------------------
+.2 - .1+make partial-fannkuch use prims in the loop
+
+sampling + byte code checking
+javap -c -cp target/classes alioth.fannkuchredux\$partial_fannkuch
+
+real	0m9.299s
+user	1m6.715s
+sys	0m0.866s
+
+--------------------
+.3 - .2+ switch to new metadata syntax, just cleanup
+
+--------------------
+.4 - .3 + convert macros to function, inline, etc
+real	0m9.597s
+No improvement, revert to .3
+
+--------------------
+.5 - .3 + use deftype instead of map for tasks
+real	0m9.964s
+no better, revert to .3
+
+--------------------
+.6 - .3 + use reducers instead of pmap
+real	0m10.429s
+
+not enough tasks for this to help at all (12)
+
+--------------------
+.7 - .3 + == to =, not= to (not (= ))
+real	0m8.934s
+
+--------------------
+--------------------
+.8 - brand new version ported directly from Java, unoptimized
+real	0m16.005s
+
+--------------------
+.9 - .8 + let typehinted arrays at top of fns
+real	0m14.948s
+
+--------------------
+.10 - .9 + replace dotimes with loop/recur
+real	0m14.382s
+
+--------------------
+.11 - .10 + use rem instead of mod in firstPermutation
+real	0m14.542s
+
+doesn't seem any faster, maybe not hot enough to matter, remove for now.
+
+--------------------
+.12 - .10 + unravel destructuring in runTask
+real	0m9.501s
+
+--------------------
+.13 - .12 + redid mod->rem in firstPermutation
+real	0m9.291s
+
+--------------------
+.14 - .13 + make p local in runTask
+real	0m9.291s
+
+--------------------
+.15 - .14 + return nil from runTask to avoid unnecessary casting
+real	0m9.069s
+
+--------------------
+.16 - .15 + AtomicInteger instead of ref
+real	0m8.701s
+
+--------------------
+.17 - .16 + remove thread state and pass hinted between fns
+real	0m8.414s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+(ns ring.util.http-response
+  (:require [potemkin.namespaces :as p]
+             ring.util.response))
+
+(defn throw!
+  "Throwns an exception with ex-info:
+  {:type :ring.util.http-response/response
+   :response response}"
+  [response]
+  {:pre (map? response)}
+  (throw (ex-info (str "HTTP "(:status response)) {:type ::response :response response})))
+{{#template}}
+
+{{#location-entity?}}
+(defn {{fn-name}}
+  "{{status}} {{name}} ({{type}})
+  {{description}}"
+  ([] ({{fn-name}} nil))
+  ([url] ({{fn-name}} url nil))
+  ([url body]
+   {:status {{status}}
+    :headers {"Location" url}
+    :body body}))
+{{/location-entity?}}
+{{^location-entity?}}
+(defn {{fn-name}}
+  "{{status}} {{name}} ({{type}})
+  {{description}}"
+  {{#entity?}}([] ({{fn-name}} nil))
+  {{/entity?}}([{{#entity?}}body{{/entity?}}{{#location?}}url{{/location?}}]
+   {:status {{status}}
+    :headers {{#location?}}{"Location" url}{{/location?}}{{^location?}}{}{{/location?}}
+    :body {{#entity?}}body{{/entity?}}{{^entity?}}""{{/entity?}}}))
+{{/location-entity?}}
+{{^success?}}
+
+(defn {{fn-name}}!
+  "{{status}} {{name}} ({{type}})
+  {{description}}
+  Throws an exception with ex-info:
+  {:type :ring.util.http-response/response
+   :response response}"
+  {{#entity?}}([] ({{fn-name}}! nil)){{/entity?}}
+  ([body]
+   (throw!
+     {:status {{status}}
+      :headers {}
+      :body body})))
+{{/success?}}
+{{/template}}
+
+;;
+;; Imported vars from ring.util.response
+;;
+
+{{#imports}}
+;; {{.}}
+(if-not (ns-resolve 'ring.util.response '{{.}})
+  (println "Can't import ring.util.response/{{.}}, try updating to Ring 1.6.0+"))
+(p/import-vars [ring.util.response {{{.}}}])
+
+{{/imports}}

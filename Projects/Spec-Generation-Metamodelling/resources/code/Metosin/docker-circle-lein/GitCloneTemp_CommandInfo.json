@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/docker-circle-lein undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-lein",
+    "repo": "https://github.com/metosin/docker-circle-lein",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/docker-circle-lein",
+    "startTime": "2020-09-01T15:46:29.087Z",
+    "endTime": "2020-09-01T15:46:29.924Z",
+    "childProcessPid": 41087,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--docker-circle-lein--41087"
+}

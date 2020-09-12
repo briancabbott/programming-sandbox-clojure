@@ -1,0 +1,15 @@
+= Companies
+Alex Miller
+2017-03-15
+:type: community
+:toc: macro
+:icons: font
+
+Below is a partial list of some companies using Clojure or ClojureScript. Most of this information comes from direct contacts, presentations, or other online resources. If you would like to be added or removed from this list, please contact __alex.miller@cognitect.com__.
+
+Also, check out the <<success_stories#,Clojure Success Stories>> and <<community_stories#,Community Stories>> pages!
+
+[format="csv", options="header"]
+|===
+include::companies.csv[]
+|===

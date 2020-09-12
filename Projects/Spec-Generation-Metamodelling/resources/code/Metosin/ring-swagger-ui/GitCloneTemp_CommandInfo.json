@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/ring-swagger-ui undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/ring-swagger-ui",
+    "repo": "https://github.com/metosin/ring-swagger-ui",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/ring-swagger-ui",
+    "startTime": "2020-09-01T15:50:04.089Z",
+    "endTime": "2020-09-01T15:50:05.011Z",
+    "childProcessPid": 41540,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--ring-swagger-ui--41540"
+}

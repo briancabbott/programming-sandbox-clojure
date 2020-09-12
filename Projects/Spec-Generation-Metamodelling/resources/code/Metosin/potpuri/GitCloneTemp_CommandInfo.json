@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/potpuri undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/potpuri",
+    "repo": "https://github.com/metosin/potpuri",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/potpuri",
+    "startTime": "2020-09-01T15:47:21.355Z",
+    "endTime": "2020-09-01T15:47:22.191Z",
+    "childProcessPid": 41394,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--potpuri--41394"
+}

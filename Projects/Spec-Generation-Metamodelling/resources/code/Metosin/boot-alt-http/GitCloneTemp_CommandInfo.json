@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/metosin/boot-alt-http undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-alt-http",
+    "repo": "https://github.com/metosin/boot-alt-http",
+    "targetPath": "undefined\\meto--09-01-2020--aPz2sa3rs3BdvmNrkvmpga/boot-alt-http",
+    "startTime": "2020-09-01T15:45:29.700Z",
+    "endTime": "2020-09-01T15:45:30.310Z",
+    "childProcessPid": 40885,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--metosin--boot-alt-http--40885"
+}

@@ -1,0 +1,10 @@
+{
+    "commandText": "git clone --progress --verbose https://github.com/plumatic/hiphip undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/hiphip",
+    "repo": "https://github.com/plumatic/hiphip",
+    "targetPath": "undefined\\plum--09-01-2020--4B8HL2hLYuLzduXUXP83YP/hiphip",
+    "startTime": "2020-09-01T16:15:37.403Z",
+    "endTime": "2020-09-01T16:15:37.991Z",
+    "childProcessPid": 42094,
+    "executionErrors": [],
+    "commandLogFilePath": "/Users/brian/dev_space/GitHub-briancabbott/programming-sandbox-clojure/Projects/Spec/workingdir/--plumatic--hiphip--42094"
+}
