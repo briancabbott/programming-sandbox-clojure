@@ -1,6 +1,0 @@
--- :name save-message! :! :n
--- :doc ...
-insert into guestbook (name, message, timestamp) values (:name, :message, :timestamp);
--- :name get-messages :? :*
--- :doc ...
-SELECT * from guestbook;
